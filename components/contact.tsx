@@ -72,7 +72,7 @@ export default function Contact() {
   }
 
   return (
-    <Section className="py-12">
+    <Section className="py-12 border-b dark:border-b-0" id="contact">
       <Container className="grid gap-12 md:grid-cols-2">
         <div className="flex flex-col gap-6">
           <h1 className="text-4xl">Contact Us</h1>
@@ -93,7 +93,7 @@ export default function Contact() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-4 dark:text-white"
             >
               <FormField
                 control={form.control}
@@ -153,7 +153,7 @@ export default function Contact() {
               />
               <Button
                 type="submit"
-                className="mt-4 w-full bg-primary text-white py-3 rounded-lg"
+                className="mt-4 w-full bg-primary text-white py-3 rounded-lg dark:bg-slate-50 dark:text-slate-800"
                 disabled={form.formState.isSubmitting}
               >
                 {form.formState.isSubmitting ? "Sending..." : "Send Message"}
@@ -162,23 +162,23 @@ export default function Contact() {
           </Form>
           <div className="mt-8">
             <h3 className="mb-2">Our Contact Information</h3>
-            <p>
+            <p className="flex gap-2 text-muted-foreground">
               <strong>
                 <MapPinHouse />
               </strong>{" "}
-              Johanesburg
+              Johanesburg, South Africa
             </p>
-            <p>
+            <p className="flex gap-2 text-muted-foreground">
               <strong>
                 <Phone />
               </strong>{" "}
               +27 64 123 4567
             </p>
-            <p>
+            <p className="flex gap-2 text-muted-foreground">
               <strong>
                 <Mail />
               </strong>{" "}
-              j88moja-code@outlook.com
+              info@j88moja.tech
             </p>
           </div>
         </div>

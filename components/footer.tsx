@@ -22,7 +22,7 @@ export default function Footer() {
     <footer>
       <Section>
         <Container className="grid gap-6">
-          <div className="not-prose flex flex-col gap-6">
+          <div className="not-prose flex gap-6">
             <Link href="/">
               <h3 className="sr-only ">J88Moja Systems</h3>
               <Image
@@ -30,7 +30,7 @@ export default function Footer() {
                 alt="J88Moja Systems Logo"
                 width={120}
                 height={27.27}
-                className="transition-all hover:opacity-75 dark:invert"
+                className="transition-all hover:opacity-75"
               />
             </Link>
             <p>
@@ -45,7 +45,6 @@ export default function Footer() {
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/terms-of-service">Terms of Service</Link>
             <Link href="/cookie-policy">Cookie Policy</Link>
-            <Link href="/contact">Contact Us</Link>
           </div>
         </Container>
         <Container className="not-prose flex flex-col justify-between gap-6 border-t pt-6 md:flex-row md:items-center md:gap-2">

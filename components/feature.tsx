@@ -8,7 +8,13 @@ import Balancer from "react-wrap-balancer";
 import { Section, Container } from "@/components/craft";
 
 // Icon imports
-import { ArrowRight, Database, Settings, ChartBar, Expand } from "lucide-react";
+import {
+  ArrowRight,
+  Database,
+  Settings,
+  ChartBar,
+  UserRoundCheck,
+} from "lucide-react";
 type FeatureText = {
   icon: JSX.Element;
   title: string;
@@ -24,7 +30,6 @@ const featureText: FeatureText[] = [
     href: "/",
     description:
       "Seamlessly integrate all your data sources to create a unified view, enabling efficient analysis and insights.",
-    cta: "Learn More",
   },
   {
     icon: <Settings className="h-6 w-6" />,
@@ -32,7 +37,6 @@ const featureText: FeatureText[] = [
     href: "/",
     description:
       "Automate repetitive tasks and processes to increase efficiency and reduce human error across your operations.",
-    cta: "Learn More",
   },
   {
     icon: <ChartBar className="h-6 w-6" />,
@@ -40,25 +44,25 @@ const featureText: FeatureText[] = [
     href: "/",
     description:
       "Leverage powerful analytics tools to gain deep insights into your operations and make informed decisions.",
-    cta: "Learn More",
   },
   {
-    icon: <Expand className="h-6 w-6" />,
-    title: "Expand Operations",
+    icon: <UserRoundCheck className="h-6 w-6" />,
+    title: "User Friendly",
     href: "/",
     description:
-      "Expand your business operations and unlock new opportunities with our robust systems designed to support your growth.",
-    cta: "Learn More",
+      "Elevate your operations with intuitive user interfaces and seamless data entry capabilities.",
   },
 ];
 
 const Feature = () => {
   return (
-    <Section className="border-b" id="features">
+    <Section className="border-b dark:border-b-0" id="features">
       <Container className="not-prose">
         <div className="flex flex-col gap-6">
           <h3 className="text-4xl">
-            <Balancer>Empowering Growth through Technology</Balancer>
+            <Balancer>
+              Empowering Continuous Improvement through Technology
+            </Balancer>
           </h3>
           <h4 className="text-2xl font-light opacity-70">
             <Balancer>
@@ -67,7 +71,7 @@ const Feature = () => {
             </Balancer>
           </h4>
 
-          <div className="mt-6 grid gap-6 md:mt-12 md:grid-cols-4">
+          <div className="mt-6 grid gap-6 md:mt-12 md:grid-cols-4 dark:text-white dark:opacity-80">
             {featureText.map(
               ({ icon, title, description, href, cta }, index) => (
                 <Link
