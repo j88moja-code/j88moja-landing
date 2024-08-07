@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Separator } from "./ui/separator";
 
 type FAQItem = {
   question: string;
@@ -43,13 +44,18 @@ const content: FAQItem[] = [
 
 const FAQ = () => {
   return (
-    <Section className="border-b dark:border-b-0" id="faq">
+    <Section id="faq">
       <Container>
-        <h3 className="!mt-0">Frequently Asked Questions</h3>
+        <h2 className="pb-4 font-bold tracking-tight text-4xl lg:text-5xl">
+          Frequently Asked Questions
+        </h2>
         <h4 className="text-muted-foreground">
           Can&apos;t find the answer you&apos;re looking for? Reach out to our
           customer support team.
         </h4>
+        <div className="flex items-center justify-center">
+          <Separator className="mt-3 bg-slate-100/20 h-0.5 w-80" />
+        </div>
         <div className="not-prose mt-4 flex flex-col gap-4 md:mt-8">
           {content.map((item, index) => (
             <Accordion key={index} type="single" collapsible>

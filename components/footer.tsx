@@ -14,14 +14,21 @@ import { Linkedin } from "lucide-react";
 // Local component imports
 import { Section, Container } from "@/components/craft";
 
+// Custom components
+import { ModeToggle } from "./theme-toggle";
+
 // Asset imports
 import Logo from "@/public/j88moja-logo.png";
+import { Separator } from "./ui/separator";
 
 export default function Footer() {
   return (
     <footer>
       <Section>
         <Container className="grid gap-6">
+          <div className="flex items-center justify-center">
+            <Separator className="mt-3 bg-slate-100/20 h-0.5 w-80" />
+          </div>
           <div className="not-prose flex gap-6">
             <Link href="/">
               <h3 className="sr-only ">J88Moja Systems</h3>
@@ -85,6 +92,7 @@ export default function Footer() {
                 <Linkedin />
               </Link>
             </Button>
+            <ModeToggle />
           </div>
           <p className="text-muted-foreground text-center md:text-left">
             © {new Date().getFullYear()} <Link href="/">J88Moja Systems</Link>.

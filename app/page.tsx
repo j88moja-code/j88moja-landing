@@ -2,6 +2,7 @@ import { Main } from "@/components/craft";
 import About from "@/components/about";
 import Contact from "@/components/contact";
 import CTA from "@/components/cta";
+import Calendly from "@/components/calendly";
 import FAQ from "@/components/faq";
 import Feature from "@/components/feature";
 import Footer from "@/components/footer";
@@ -16,6 +17,7 @@ export default function Page() {
       <About />
       <Products />
       <CTA />
+      <Calendly />
       <FAQ />
       <Contact />
       <Footer />

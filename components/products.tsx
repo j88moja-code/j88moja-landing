@@ -19,6 +19,7 @@ import { Section, Container } from "@/components/craft";
 import CMOOSLogo from "@/public/products/logo-no-background.png";
 import Link from "next/link";
 import { HeartHandshake } from "lucide-react";
+import { Separator } from "./ui/separator";
 
 type Product = {
   id: number;
@@ -34,7 +35,7 @@ const products: Product[] = [
     id: 1,
     name: "CMOOS",
     description:
-      "A state-of-the-art system designed to centralise and streamline data capturing, analysis, and reporting for operations. CMOOS provides a comprehensive view of operational data, enabling efficient and effective decision-making.",
+      "A one-stop system designed to centralise and streamline data capturing, analysis, and reporting for operations. CMOOS provides a comprehensive view of operational data, enabling efficient and effective decision-making.",
     image: CMOOSLogo,
     buttonLink: "/products/cmoos",
     buttonText: "Learn More",
@@ -45,14 +46,17 @@ export default function Products() {
   return (
     <Section className="border-b dark:border-b-0" id="products">
       <Container>
-        <h3 className="text-lg font-semibold mb-2">
+        <h2 className="pb-4 font-bold tracking-tight text-4xl lg:text-5xl">
           <Balancer>Our Product</Balancer>
-        </h3>
+        </h2>
         <h4 className="text-2xl font-light opacity-70">
           <Balancer>
             Explore our product that can be tailored to meet your unique needs.
           </Balancer>
         </h4>
+        <div className="flex items-center justify-center">
+          <Separator className="mt-3 bg-slate-100/20 h-0.5 w-80" />
+        </div>
         <div className="not-prose mt-4 flex flex-col gap-4 md:mt-8">
           {products.map((product, index) => (
             <Card key={index}>

@@ -20,6 +20,7 @@ import {
 // Asset imports
 import Placeholder from "@/public/hero-j88moja.jpg";
 import Placeholder2 from "@/public/hero-2.jpg";
+import { Separator } from "./ui/separator";
 
 type AboutText = {
   id: number;
@@ -65,15 +66,21 @@ export default function About() {
   }, [api]);
 
   return (
-    <Section id="benefits" className="border-b dark:border-b-0">
+    <Section id="benefits">
       <Container className="flex flex-col items-center gap-6">
+        <div className="flex items-center justify-center">
+          <Separator className="mt-3 bg-slate-100/20 h-0.5 w-80" />
+        </div>
+        
         <Carousel setApi={setApi} className="w-full max-w-2xl mx-auto">
           <CarouselContent>
             {aboutTexts.map((text) => (
               <CarouselItem key={text.id}>
                 <div className="flex h-full w-full items-center justify-center">
                   <div className="w-full max-w-lg text-center">
-                    <h3 className="text-3xl font-bold mb-4">{text.title}</h3>
+                    <h2 className="pb-4 font-bold tracking-tight text-4xl lg:text-5xl">
+                      {text.title}
+                    </h2>
                     <Image
                       src={text.image}
                       alt={text.alt}

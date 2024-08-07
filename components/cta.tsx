@@ -1,4 +1,3 @@
-// React and Next.js imports
 import Link from "next/link";
 
 // Third-party library imports
@@ -9,18 +8,22 @@ import { Button } from "@/components/ui/button";
 
 // Custom components
 import { Section, Container } from "@/components/craft";
+import { Separator } from "./ui/separator";
 
 const CTA = () => {
   return (
     <Section className="px-4">
       <Container className="flex flex-col items-center gap-6 rounded-lg border bg-accent/50 p-6 text-center md:rounded-xl md:p-12">
-        <h2 className="!my-0">
-          Empowering Continuous Improvement through Technology
+        <h2 className="pb-4 font-bold tracking-tight text-4xl lg:text-5xl">
+          Ready to take your business operations to the next level?
         </h2>
+        <div className="flex items-center justify-center">
+          <Separator className="mt-3 bg-slate-100/20 h-0.5 w-80" />
+        </div>
         <h3 className="!mb-0 text-muted-foreground">
           <Balancer>
-            Transform your business operations with our innovative solutions
-            designed to enhance efficiency and drive success.
+            Let&apos;s build something amazing together. Get in touch with us or
+            book a free consultation to discuss your needs.
           </Balancer>
         </h3>
         <div className="not-prose mx-auto flex items-center gap-2">
@@ -28,7 +31,7 @@ const CTA = () => {
             <Link href="#contact">Contact Us</Link>
           </Button>
           <Button className="w-fit" variant="link" asChild>
-            <Link href="#features">Explore Features {"->"}</Link>
+            <Link href="#calendly">Book a Consultation {"->"}</Link>
           </Button>
         </div>
       </Container>

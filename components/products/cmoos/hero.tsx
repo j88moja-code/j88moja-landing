@@ -1,8 +1,9 @@
 "use client";
 // React and Next.js imports
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import AOS from "aos";
 
 // Local component imports
 import { Section, Container } from "@/components/craft";
@@ -16,6 +17,13 @@ import Balancer from "react-wrap-balancer";
 import { Menu } from "lucide-react";
 
 const Hero = () => {
+  useEffect(() => {
+    AOS.init({
+      disable: "phone",
+      duration: 800,
+      easing: "ease-out-cubic",
+    });
+  });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -25,7 +33,7 @@ const Hero = () => {
     <Section className="mx-auto relative h-[720px]" id="home">
       <Container className="not-prose">
         {/* Name and Nav */}
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between" data-aos="fade-up">
           <div className="">
             <h1 className="mb-4 text-3xl font-normal md:text-6xl">
               <Link className="transition-all hover:opacity-70" href="#">
@@ -138,7 +146,11 @@ const Hero = () => {
         </div>
 
         {/* Images */}
-        <div className="fit absolute bottom-0 right-0 flex items-end justify-end gap-2">
+        <div
+          className="fit absolute bottom-0 right-0 flex items-end justify-end gap-2"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           {/* Image 1 */}
           <div className="hidden h-72 w-96 md:block">
             <Image
@@ -158,7 +170,11 @@ const Hero = () => {
         </div>
 
         {/* Circle CTA */}
-        <div className="absolute bottom-2 right-2 flex h-12 w-12 items-center justify-center rounded-full border bg-secondary p-12 text-center font-medium leading-4 transition-all hover:opacity-80">
+        <div
+          className="absolute bottom-2 right-2 flex h-12 w-12 items-center justify-center rounded-full border bg-secondary p-12 text-center font-medium leading-4 transition-all hover:opacity-80"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <Link className="-mt-1" href="#cmoos-cat">
             Get Started
           </Link>

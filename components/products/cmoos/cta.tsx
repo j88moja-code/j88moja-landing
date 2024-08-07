@@ -4,6 +4,7 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Balancer from "react-wrap-balancer";
+import { toast } from "sonner";
 
 import { Section, Container } from "@/components/craft";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
+import { postCMOOSMailingListData } from "@/app/api/actions";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -34,13 +37,6 @@ export function CTA() {
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
-
   return (
     <Section id="cmoos-cat">
       <Container className="space-y-8">
@@ -52,7 +48,17 @@ export function CTA() {
           </Balancer>
         </p>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form
+            action={async (formData) => {
+              await postCMOOSMailingListData(formData);
+              form.reset();
+              toast.success("Thank you for joining our mailing list!");
+              setTimeout(() => {
+                toast.dismiss();
+              }, 3000);
+            }}
+            className="space-y-8"
+          >
             <FormField
               control={form.control}
               name="email"
@@ -73,7 +79,19 @@ export function CTA() {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            {form.formState.isSubmitting ? (
+              <Button disabled>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
+              </Button>
+            ) : (
+              <Button
+                disabled={form.formState.isSubmitting}
+                type="submit"
+                variant="default"
+              >
+                Join
+              </Button>
+            )}
           </form>
         </Form>
         <div className="flex justify-center">
