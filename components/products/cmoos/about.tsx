@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Balancer from "react-wrap-balancer";
+import Balancer from 'react-wrap-balancer';
 
 // Component imports
-import { Section, Container } from "@/components/craft";
+import { Section, Container } from '@/components/craft';
 
 export default function About() {
   return (
-    <Section className="mx-auto border-b dark:border-b-0" id="about">
+    <Section className='mx-auto border-b dark:border-b-0' id='about'>
       <Container>
-        <h2 className="text-3xl font-bold">CMOOS&#8482;</h2>
-        <div className="flex flex-col space-y-4 gap-6">
-          <p className="text-lg opacity-70 mt-4">
+        <h2 className='text-3xl font-bold'>CMOOS&#8482;</h2>
+        <div className='flex flex-col gap-6 space-y-4'>
+          <p className='mt-4 text-lg opacity-70'>
             <Balancer>
               CMOOS is your ultimate destination for a diverse range of
               enterprise applications. Crafted with cutting-edge technology and
@@ -22,7 +22,7 @@ export default function About() {
               operations, CMOOS has you covered.
             </Balancer>
           </p>
-          <p className="text-lg opacity-70 mt-4">
+          <p className='mt-4 text-lg opacity-70'>
             <Balancer>
               Discover the power of CMOOS and elevate your business to the next
               level. Our adaptable platform is designed to scale with your

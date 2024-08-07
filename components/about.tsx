@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Balancer from "react-wrap-balancer";
-import Image, { StaticImageData } from "next/image";
-import { useEffect, useState } from "react";
+import Balancer from 'react-wrap-balancer';
+import Image, { StaticImageData } from 'next/image';
+import { useEffect, useState } from 'react';
 
 // Component imports
-import { Section, Container } from "@/components/craft";
+import { Section, Container } from '@/components/craft';
 
 // UI Components
 import {
@@ -15,12 +15,12 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel';
 
 // Asset imports
-import Placeholder from "@/public/hero-j88moja.jpg";
-import Placeholder2 from "@/public/hero-2.jpg";
-import { Separator } from "./ui/separator";
+import Placeholder from '@/public/hero-j88moja.jpg';
+import Placeholder2 from '@/public/hero-2.jpg';
+import { Separator } from './ui/separator';
 
 type AboutText = {
   id: number;
@@ -33,19 +33,19 @@ type AboutText = {
 const aboutTexts: AboutText[] = [
   {
     id: 1,
-    title: "Improved Processes",
+    title: 'Improved Processes',
     description:
-      "Our software systems optimize your existing processes and systems, making operations management seamless. Say goodbye to manual tasks and embrace efficiency.",
+      'Our software systems optimize your existing processes and systems, making operations management seamless. Say goodbye to manual tasks and embrace efficiency.',
     image: Placeholder,
-    alt: "A depiction of improved processes",
+    alt: 'A depiction of improved processes',
   },
   {
     id: 2,
-    title: "Streamlined Operations",
+    title: 'Streamlined Operations',
     description:
-      "With our user-friendly interface, you can easily manage and monitor all aspects of your business in one place. Say hello to streamlined operations and increased productivity.",
+      'With our user-friendly interface, you can easily manage and monitor all aspects of your business in one place. Say hello to streamlined operations and increased productivity.',
     image: Placeholder2,
-    alt: "A depiction of streamlined operations",
+    alt: 'A depiction of streamlined operations',
   },
 ];
 
@@ -60,34 +60,34 @@ export default function About() {
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
+    api.on('select', () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
 
   return (
-    <Section id="benefits">
-      <Container className="flex flex-col items-center gap-6">
-        <div className="flex items-center justify-center">
-          <Separator className="mt-3 bg-slate-100/20 h-0.5 w-80" />
+    <Section id='benefits'>
+      <Container className='flex flex-col items-center gap-6'>
+        <div className='flex items-center justify-center'>
+          <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
         </div>
-        
-        <Carousel setApi={setApi} className="w-full max-w-2xl mx-auto">
+
+        <Carousel setApi={setApi} className='mx-auto w-full max-w-2xl'>
           <CarouselContent>
             {aboutTexts.map((text) => (
               <CarouselItem key={text.id}>
-                <div className="flex h-full w-full items-center justify-center">
-                  <div className="w-full max-w-lg text-center">
-                    <h2 className="pb-4 font-bold tracking-tight text-4xl lg:text-5xl">
+                <div className='flex h-full w-full items-center justify-center'>
+                  <div className='w-full max-w-lg text-center'>
+                    <h2 className='pb-4 text-4xl font-bold tracking-tight lg:text-5xl'>
                       {text.title}
                     </h2>
                     <Image
                       src={text.image}
                       alt={text.alt}
-                      className="rounded-lg"
-                      placeholder="blur"
+                      className='rounded-lg'
+                      placeholder='blur'
                     />
-                    <p className="text-lg mt-4">
+                    <p className='mt-4 text-lg'>
                       <Balancer>{text.description}</Balancer>
                     </p>
                   </div>
@@ -95,10 +95,10 @@ export default function About() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2 cursor-pointer hover:bg-gray-700">
+          <CarouselPrevious className='absolute left-4 top-1/2 -translate-y-1/2 transform cursor-pointer rounded-full bg-gray-800 p-2 text-white hover:bg-gray-700'>
             Prev
           </CarouselPrevious>
-          <CarouselNext className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2 cursor-pointer hover:bg-gray-700">
+          <CarouselNext className='absolute right-4 top-1/2 -translate-y-1/2 transform cursor-pointer rounded-full bg-gray-800 p-2 text-white hover:bg-gray-700'>
             Next
           </CarouselNext>
         </Carousel>

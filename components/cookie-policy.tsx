@@ -1,14 +1,14 @@
 // Custom components
-import { Section, Container } from "@/components/craft";
-import Balancer from "react-wrap-balancer";
+import { Section, Container } from '@/components/craft';
+import Balancer from 'react-wrap-balancer';
 
 export const CookiePolicy = () => {
   return (
     <Section>
-      <Container className="mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-4">Cookie Policy</h1>
+      <Container className='mx-auto px-4 py-8'>
+        <h1 className='mb-4 text-3xl font-bold'>Cookie Policy</h1>
         <Balancer>
-          <p className="mb-4">
+          <p className='mb-4'>
             This Cookie Policy explains how J88Moja Systems ("we", "us", or
             "our") uses cookies and similar technologies to recognize you when
             you visit our website at www.j88moja.tech. It explains what these
@@ -16,14 +16,14 @@ export const CookiePolicy = () => {
             control our use of them.
           </p>
 
-          <h2 className="text-2xl font-bold mb-2">1. What are cookies?</h2>
-          <p className="mb-4">
+          <h2 className='mb-2 text-2xl font-bold'>1. What are cookies?</h2>
+          <p className='mb-4'>
             Cookies are small data files that are placed on your computer or
             mobile device when you visit a website. Cookies are widely used by
             website owners to make their websites work, or to work more
             efficiently, as well as to provide reporting information.
           </p>
-          <p className="mb-4">
+          <p className='mb-4'>
             Cookies set by the website owner (in this case, J88Moja Systems) are
             called "first-party cookies." Cookies set by parties other than the
             website owner are called "third-party cookies." Third-party cookies
@@ -34,8 +34,8 @@ export const CookiePolicy = () => {
             and also when it visits certain other websites.
           </p>
 
-          <h2 className="text-2xl font-bold mb-2">2. Why do we use cookies?</h2>
-          <p className="mb-4">
+          <h2 className='mb-2 text-2xl font-bold'>2. Why do we use cookies?</h2>
+          <p className='mb-4'>
             We use first-party and third-party cookies for several reasons. Some
             cookies are required for technical reasons in order for our Website
             to operate, and we refer to these as "essential" or "strictly
@@ -47,10 +47,10 @@ export const CookiePolicy = () => {
             all.
           </p>
 
-          <h2 className="text-2xl font-bold mb-2">
+          <h2 className='mb-2 text-2xl font-bold'>
             3. What types of cookies do we use?
           </h2>
-          <p className="mb-4">
+          <p className='mb-4'>
             Cookies can be "persistent" or "session" Cookies. Persistent Cookies
             remain on your personal computer or mobile device when you visit our
             Website for the duration of your visit. Session Cookies are
@@ -60,15 +60,15 @@ export const CookiePolicy = () => {
             Website may not function properly without cookies.
           </p>
 
-          <h2 className="text-2xl font-bold mb-2">4. Third-party cookies</h2>
-          <p className="mb-4">
+          <h2 className='mb-2 text-2xl font-bold'>4. Third-party cookies</h2>
+          <p className='mb-4'>
             In some special cases, we may use cookies provided by trusted
             third-party companies including Callendly and Google Analytics.
             These companies are not governed by this Cookie Policy.
           </p>
 
-          <h2 className="text-2xl font-bold mb-2">5. More Information</h2>
-          <p className="mb-4">
+          <h2 className='mb-2 text-2xl font-bold'>5. More Information</h2>
+          <p className='mb-4'>
             Hopefully, this Cookie Policy has been helpful in understanding the
             cookies we use. If you have any further questions or comments,
             please email us at info@j88moja.tech

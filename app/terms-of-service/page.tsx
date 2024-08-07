@@ -1,5 +1,5 @@
-import { Main } from "@/components/craft";
-import { TermsOfService } from "@/components/terms-of-service";
+import { Main } from '@/components/craft';
+import { TermsOfService } from '@/components/terms-of-service';
 export default function Page() {
   return (
     <Main>

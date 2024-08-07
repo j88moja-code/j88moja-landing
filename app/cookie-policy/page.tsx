@@ -1,5 +1,5 @@
-import { Main } from "@/components/craft";
-import { CookiePolicy } from "@/components/cookie-policy";
+import { Main } from '@/components/craft';
+import { CookiePolicy } from '@/components/cookie-policy';
 
 export default function Page() {
   return (
