@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import "aos/dist/aos.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -11,16 +11,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const roboto_mono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-roboto-mono",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "J88Moja Systems",
   description:
-    "Empowering Growth through Technology with Innovative Solutions.",
+    "Empowering Continuous Improvement through Technology with Innovative Solutions.",
 };
 
 export default function RootLayout({
@@ -30,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${roboto_mono.variable}`}>
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
