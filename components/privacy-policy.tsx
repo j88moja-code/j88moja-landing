@@ -74,10 +74,10 @@ export const PrivacyPolicy = () => {
           <h2 className='mb-2 text-2xl font-bold'>6. Updates to this Policy</h2>
           <p className='mb-4'>
             We may update this privacy notice from time to time. The updated
-            version will be indicated by an updated "Revised" date and the
-            updated version will be effective as soon as it is accessible. If we
-            make material changes to this privacy notice, we may notify you
-            either by prominently posting a notice of such changes or by
+            version will be indicated by an updated &quot;Revised&quot; date and
+            the updated version will be effective as soon as it is accessible.
+            If we make material changes to this privacy notice, we may notify
+            you either by prominently posting a notice of such changes or by
             directly sending you a notification.
           </p>
 
@@ -88,7 +88,7 @@ export const PrivacyPolicy = () => {
           </p>
           <address className='mb-4'>
             J88Moja Systems <br />
-            Johanesburg <br />
+            Johannesburg <br />
             South Africa
           </address>
         </Balancer>

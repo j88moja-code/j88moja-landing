@@ -69,11 +69,13 @@ export function CTA() {
                     <Input
                       className='md:w-96'
                       placeholder='email@example.com'
+                      type='email'
+                      required
                       {...field}
                     />
                   </FormControl>
                   <FormDescription>
-                    We'll never share your email.
+                    We&apos;ll never share your email.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

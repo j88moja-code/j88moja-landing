@@ -1,4 +1,5 @@
 // React and Next.js
+import React from 'react';
 import Link from 'next/link';
 
 // Third-party libraries
@@ -10,8 +11,10 @@ import { Section, Container } from '@/components/craft';
 // Icons
 import { Coins, ArrowRight } from 'lucide-react';
 
+type NewType = React.JSX.Element;
+
 type PriceText = {
-  icon: JSX.Element;
+  icon: NewType;
   title: string;
   description: string;
   href?: string;

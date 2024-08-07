@@ -4,7 +4,6 @@
 import Balancer from 'react-wrap-balancer';
 
 // UI component imports
-import { Button } from '@/components/ui/button';
 import { InlineWidget } from 'react-calendly';
 
 // Custom components
@@ -24,7 +23,6 @@ const Calendly = () => {
         <p className='!mb-0 text-muted-foreground'>
           <Balancer>
             Schedule a free consultation with our team to discuss your needs.
-          
           </Balancer>
         </p>
         <InlineWidget

@@ -1,5 +1,6 @@
 // React and Next.js imports
 import Link from 'next/link';
+import React from 'react';
 
 // Third-party library imports
 import Balancer from 'react-wrap-balancer';
@@ -16,8 +17,9 @@ import {
   UserRoundCheck,
 } from 'lucide-react';
 import { Separator } from './ui/separator';
+type NewType = React.JSX.Element;
 type FeatureText = {
-  icon: JSX.Element;
+  icon: NewType;
   title: string;
   description: string;
   href?: string;

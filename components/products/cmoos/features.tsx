@@ -86,8 +86,8 @@ const featuresTexts: FeaturesText[] = [
 
 export default function Features() {
   const [api, setApi] = React.useState<CarouselApi | null>(null);
-  const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
+  const [, setCurrent] = React.useState(0);
+  const [, setCount] = React.useState(0);
 
   React.useEffect(() => {
     if (!api) return;
