@@ -66,7 +66,7 @@ export default function About() {
   }, [api]);
 
   return (
-    <Section id='benefits'>
+    <Section id='benefits' >
       <Container className='flex flex-col items-center gap-6'>
         <div className='flex items-center justify-center'>
           <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />

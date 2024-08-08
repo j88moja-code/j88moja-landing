@@ -46,31 +46,35 @@ const FAQ = () => {
   return (
     <Section id='faq'>
       <Container>
-        <h2 className='pb-4 text-4xl font-bold tracking-tight lg:text-5xl'>
+        {/* Section Header */}
+        <h2 className='text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl'>
           Frequently Asked Questions
         </h2>
-        <h4 className='text-muted-foreground'>
-          Can&apos;t find the answer you&apos;re looking for? Reach out to our
-          customer support team.
+        <h4 className='mt-2 text-center text-lg text-gray-600 dark:text-gray-300'>
+          Can't find the answer you're looking for? Reach out to our customer
+          support team.
         </h4>
-        <div className='flex items-center justify-center'>
-          <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
+        <div className='flex justify-center'>
+          <Separator className='mt-3 h-0.5 w-full max-w-xl bg-slate-200 dark:bg-slate-700' />
         </div>
-        <div className='not-prose mt-4 flex flex-col gap-4 md:mt-8'>
+
+        {/* Accordion Items */}
+        <div className='mt-6 space-y-4 md:mt-8 md:space-y-6'>
           {content.map((item, index) => (
             <Accordion key={index} type='single' collapsible>
               <AccordionItem value={item.question}>
-                <AccordionTrigger className='text-left'>
+                <AccordionTrigger className='text-left text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400'>
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className='text-base md:w-3/4'>
+                <AccordionContent className='mt-2 text-base text-gray-700 dark:text-gray-300 md:w-3/4'>
                   {item.answer}
                   {item.link && (
                     <a
                       href={item.link}
-                      className='mt-2 flex w-full items-center opacity-60 transition-all hover:opacity-100'
+                      className='mt-2 inline-flex items-center text-blue-500 transition-opacity duration-150 hover:opacity-80'
                     >
-                      Learn more <ArrowUpRight className='ml-1' size='16' />
+                      Learn more
+                      <ArrowUpRight className='ml-1 h-4 w-4' />
                     </a>
                   )}
                 </AccordionContent>

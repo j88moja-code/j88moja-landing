@@ -44,31 +44,41 @@ const products: Product[] = [
 
 export default function Products() {
   return (
-    <Section className='border-b dark:border-b-0' id='products'>
-      <Container>
-        <h2 className='pb-4 text-4xl font-bold tracking-tight lg:text-5xl'>
+    <Section id='products'>
+      <Container className='px-4 md:px-8'>
+        {/* Heading */}
+        <h2 className='text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl lg:text-5xl'>
           <Balancer>Our Product</Balancer>
         </h2>
-        <h4 className='text-2xl font-light opacity-70'>
+
+        {/* Subheading */}
+        <h4 className='mt-2 text-center text-xl font-light text-gray-600 opacity-80 dark:text-gray-300 md:text-2xl'>
           <Balancer>
             Explore our product that can be tailored to meet your unique needs.
           </Balancer>
         </h4>
-        <div className='flex items-center justify-center'>
-          <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
+
+        {/* Separator */}
+        <div className='mt-6 flex justify-center'>
+          <Separator className='h-0.5 w-3/4 max-w-4xl bg-slate-100 dark:bg-slate-700' />
         </div>
-        <div className='not-prose mt-4 flex flex-col gap-4 md:mt-8'>
+
+        {/* Products List */}
+        <div className='mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {products.map((product, index) => (
-            <Card key={index}>
+            <Card
+              key={index}
+              className='rounded-lg bg-white shadow-lg dark:bg-gray-800'
+            >
               <CardHeader>
-                <CardTitle className='flex items-center gap-2 text-2xl font-bold opacity-70 md:text-3xl'>
+                <CardTitle className='flex items-center gap-2 text-xl font-semibold text-gray-900 dark:text-white md:text-2xl'>
                   <HeartHandshake
                     size={24}
                     className='text-accent-foreground'
                   />
                   {product.name}&#8482;
                 </CardTitle>
-                <CardDescription className='mb-4 text-gray-700 dark:text-gray-400'>
+                <CardDescription className='mt-2 text-gray-700 dark:text-gray-400'>
                   <Balancer>{product.description}</Balancer>
                 </CardDescription>
               </CardHeader>

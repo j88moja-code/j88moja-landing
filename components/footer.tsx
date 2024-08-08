@@ -19,28 +19,25 @@ import { ModeToggle } from './theme-toggle';
 
 // Asset imports
 import Logo from '@/public/j88moja-logo.png';
-import { Separator } from './ui/separator';
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className='light:bg-gray-800 bg-gray-900 py-8 text-white'>
       <Section>
-        <Container className='grid gap-6'>
-          <div className='flex items-center justify-center'>
-            <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
-          </div>
-          <div className='not-prose flex gap-6'>
+        <Container className='grid gap-8'>
+          {/* Logo and Description */}
+          <div className='flex flex-col items-center gap-4 text-center md:flex-row md:items-start md:text-left'>
             <Link href='/'>
               <h3 className='sr-only'>J88Moja Systems</h3>
               <Image
                 src={Logo}
                 alt='J88Moja Systems Logo'
                 width={120}
-                height={27.27}
-                className='transition-all hover:opacity-75'
+                height={27}
+                className='transition-opacity duration-150 hover:opacity-75'
               />
             </Link>
-            <p>
+            <p className='max-w-md'>
               <Balancer>
                 J88Moja (PTY) Ltd t/a J88Moja Systems is dedicated to empowering
                 businesses with innovative technology solutions designed to
@@ -48,55 +45,72 @@ export default function Footer() {
               </Balancer>
             </p>
           </div>
-          <div className='mb-4 flex flex-col gap-4 md:mb-0 md:flex-row'>
-            <Link href='/privacy-policy'>Privacy Policy</Link>
-            <Link href='/terms-of-service'>Terms of Service</Link>
-            <Link href='/cookie-policy'>Cookie Policy</Link>
+
+          {/* Links */}
+          <div className='flex flex-col items-center gap-4 text-center md:flex-row md:gap-6 md:text-left'>
+            <Link href='/privacy-policy' className='hover:underline'>
+              Privacy Policy
+            </Link>
+            <Link href='/terms-of-service' className='hover:underline'>
+              Terms of Service
+            </Link>
+            <Link href='/cookie-policy' className='hover:underline'>
+              Cookie Policy
+            </Link>
           </div>
         </Container>
-        <Container className='not-prose flex flex-col justify-between gap-6 border-t pt-6 md:flex-row md:items-center md:gap-2'>
+
+        {/* Social Media Links and Copyright */}
+        <Container className='mt-8 flex flex-col items-center justify-between gap-4 border-t border-slate-100/20 pt-6 md:flex-row'>
           <div className='flex gap-2'>
-            {/* <Button variant="outline" size="icon" asChild>
-              <Link
-                href="https://github.com/J88MojaSystems"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github />
-              </Link>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <Link
-                href="https://twitter.com/J88MojaSystems"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Twitter />
-              </Link>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <Link
-                href="https://facebook.com/J88MojaSystems"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Facebook />
-              </Link>
-            </Button> */}
+            {/* Uncomment social media buttons if needed */}
+            {/*
+    <Button variant="outline" size="icon" asChild>
+      <Link
+        href="https://github.com/J88MojaSystems"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Github className="h-5 w-5 text-gray-700 transition-colors duration-150 hover:text-black dark:text-gray-300 dark:hover:text-white" />
+      </Link>
+    </Button>
+    <Button variant="outline" size="icon" asChild>
+      <Link
+        href="https://twitter.com/J88MojaSystems"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Twitter className="h-5 w-5 text-gray-700 transition-colors duration-150 hover:text-black dark:text-gray-300 dark:hover:text-white" />
+      </Link>
+    </Button>
+    <Button variant="outline" size="icon" asChild>
+      <Link
+        href="https://facebook.com/J88MojaSystems"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Facebook className="h-5 w-5 text-gray-700 transition-colors duration-150 hover:text-black dark:text-gray-300 dark:hover:text-white" />
+      </Link>
+    </Button>
+    */}
             <Button variant='outline' size='icon' asChild>
               <Link
                 href='https://linkedin.com/company/J88MojaSystems'
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                <Linkedin />
+                <Linkedin className='h-5 w-5 text-gray-700 transition-colors duration-150 hover:text-black dark:text-gray-300 dark:hover:text-white' />
               </Link>
             </Button>
             <ModeToggle />
           </div>
-          <p className='text-center text-muted-foreground md:text-left'>
-            © {new Date().getFullYear()} <Link href='/'>J88Moja Systems</Link>.
-            All rights reserved.
+
+          <p className='text-center text-sm text-gray-400 md:text-left'>
+            © {new Date().getFullYear()}{' '}
+            <Link href='/' className='hover:underline'>
+              J88Moja Systems
+            </Link>
+            . All rights reserved.
           </p>
         </Container>
       </Section>

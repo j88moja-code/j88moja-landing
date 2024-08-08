@@ -4,7 +4,7 @@ import Balancer from 'react-wrap-balancer';
 
 export const PrivacyPolicy = () => {
   return (
-    <Section className='border-b dark:border-b-0' id='tos'>
+    <Section id='tos'>
       <Container className='mx-auto px-4 py-8'>
         <h1 className='mb-4 text-3xl font-bold'>Privacy Policy</h1>
         <Balancer>

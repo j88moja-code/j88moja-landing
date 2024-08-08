@@ -24,17 +24,17 @@ export default function Hero() {
       <Container>
         <div className='px-8 text-center'>
           <div className='mb-6' data-aos='fade-down'>
-            <div className='relative inline-flex before:absolute before:inset-0'>
+            <div className='relative inline-flex'>
               <Link href='#calendly'>
                 <Button
                   asChild
-                  // className="px-3 py-1 text-sm font-medium inline-flex items-center justify-center border rounded-full text-zinc-900 dark:text-white hover:text-white transition duration-150 ease-in-out w-full group border-slate-100/40"
                   variant='default'
+                  className='dark:shadow-primary-500/40 shadow-primary-500/50 dark:hover:shadow-primary-500/50 group relative inline-flex w-full items-center justify-center rounded-full border border-slate-100/40 px-4 py-2 text-sm font-medium text-zinc-900 shadow-lg transition duration-300 ease-in-out hover:shadow-xl dark:border-slate-700 dark:text-white dark:hover:shadow-xl'
                 >
-                  <span className='relative inline-flex items-center'>
+                  <span className='relative inline-flex items-center text-white dark:text-black'>
                     Book Consultation{' '}
-                    <span className='text-primary-500 ml-1 tracking-normal transition-transform duration-150 ease-in-out group-hover:translate-x-0.5'>
-                      -&gt;
+                    <span className='text-primary-500 ml-1 tracking-normal transition-transform duration-150 ease-in-out group-hover:translate-x-1'>
+                      &rarr;
                     </span>
                   </span>
                 </Button>
@@ -42,20 +42,21 @@ export default function Hero() {
             </div>
           </div>
           <h1
-            className='bg-gradient-to-r from-orange-500 to-green-500 bg-clip-text pb-4 text-7xl font-extrabold tracking-tight text-transparent lg:text-8xl'
+            className='bg-gradient-to-r from-orange-500 to-green-500 bg-clip-text pb-4 text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'
             data-aos='fade-down'
           >
             <Balancer>
-              <span className='font-bold'>
+              <span className='block text-center font-bold'>
                 Empowering Continuous Improvement
               </span>
-              <p className='mb-8 text-lg font-medium text-zinc-300/40'>
+              <p className='mb-4 text-center text-base font-medium text-zinc-300/40 sm:text-lg md:text-xl lg:text-2xl'>
                 through J88Moja Systems
               </p>
             </Balancer>
           </h1>
+
           <p
-            className='mt-4 text-muted-foreground opacity-70'
+            className='mt-4 text-gray-600 opacity-70 sm:text-base md:text-lg lg:text-xl xl:text-2xl'
             data-aos='fade-down'
             data-aos-delay='200'
           >
@@ -64,8 +65,9 @@ export default function Hero() {
               systems.
             </Balancer>
           </p>
+
           <h3
-            className='text-muted-foreground'
+            className='mb-2 leading-relaxed text-muted-foreground'
             data-aos='fade-down'
             data-aos-delay='400'
           >
@@ -103,16 +105,16 @@ export default function Hero() {
             ].map(({ href, label }, index) => (
               <div
                 key={index}
-                className='mx-auto flex max-w-xs flex-col items-center gap-4 sm:inline-flex sm:max-w-none sm:flex-row sm:justify-center'
+                className='mx-auto flex max-w-xs flex-col items-center gap-4 sm:max-w-none sm:flex-row sm:justify-center'
               >
                 <Link href={href}>
                   <Button
                     asChild
-                    className='to-green/80 hover:from-orange/60 group flex w-full items-center justify-center whitespace-nowrap rounded bg-gradient-to-r from-orange-500 via-orange-200 px-4 py-1.5 font-medium text-zinc-900 transition duration-150 ease-in-out hover:bg-gradient-to-r hover:via-orange-500 hover:to-green-500'
+                    className='group flex w-full items-center justify-center whitespace-nowrap rounded bg-gradient-to-r from-orange-500 via-orange-200 to-green-500 px-4 py-2 font-medium text-zinc-900 transition-all duration-150 ease-in-out hover:bg-gradient-to-r hover:from-orange-600 hover:via-orange-400 hover:to-green-600'
                     variant='ghost'
                   >
                     <span className='relative inline-flex items-center'>
-                      {label}{' '}
+                      {label}
                       <span className='text-primary-500 ml-1 tracking-normal transition-transform duration-150 ease-in-out group-hover:translate-x-0.5'>
                         -&gt;
                       </span>
