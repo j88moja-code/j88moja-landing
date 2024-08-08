@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 import 'aos/dist/aos.css';
@@ -39,6 +40,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <SpeedInsights />
           <Toaster />
         </ThemeProvider>
       </body>
