@@ -21,6 +21,7 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
 import { postCMOOSMailingListData } from '@/app/api/actions';
+import { Separator } from '@/components/ui/separator';
 
 const formSchema = z.object({
   email: z.string().email({
@@ -39,6 +40,9 @@ export function CTA() {
 
   return (
     <Section id='cmoos-cat'>
+      <div className='flex items-center justify-center'>
+        <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
+      </div>
       <Container className='space-y-8'>
         <h2 className='!my-0'>Join our mailing list</h2>
         <p className='text-lg opacity-70 md:text-2xl'>

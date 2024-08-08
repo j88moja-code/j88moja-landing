@@ -7,7 +7,7 @@ import Balancer from 'react-wrap-balancer';
 
 // Custom components
 import { Section, Container } from '@/components/craft';
-
+import { Separator } from '@/components/ui/separator';
 // Icons
 import { Coins, ArrowRight } from 'lucide-react';
 
@@ -47,8 +47,11 @@ const priceTexts: PriceText[] = [
 
 const Feature = () => {
   return (
-    <Section className='border-b' id='pricing'>
+    <Section id='pricing'>
       <Container className='not-prose'>
+        <div className='flex items-center justify-center'>
+          <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
+        </div>
         <div className='flex flex-col gap-6'>
           <h3 className='text-4xl'>
             <Balancer>Pricing</Balancer>
