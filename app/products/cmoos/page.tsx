@@ -8,6 +8,8 @@ import Pricing from '@/components/products/cmoos/pricing';
 
 export const metadata: Metadata = {
   title: 'CMOOS',
+  description:
+    'A one-stop system designed to centralise and streamline data capturing, analysis, and reporting for operations.',
 };
 
 export default function Page() {

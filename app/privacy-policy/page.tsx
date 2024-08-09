@@ -4,6 +4,10 @@ import { PrivacyPolicy } from '@/components/privacy-policy';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function Page() {

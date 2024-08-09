@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
+import Footer from '@/components/footer';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -48,6 +49,7 @@ export default function RootLayout({
           {children}
           <SpeedInsights />
           <Toaster />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
