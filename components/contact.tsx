@@ -198,13 +198,7 @@ export default function Contact() {
               <strong>
                 <MapPinHouse />
               </strong>{' '}
-              Johanesburg, South Africa
-            </p>
-            <p className='flex gap-2 text-muted-foreground'>
-              <strong>
-                <Phone />
-              </strong>{' '}
-              +27 83 485 5744
+              Johanesburg, Gauteng, South Africa
             </p>
             <Link
               className='flex gap-2 text-muted-foreground'

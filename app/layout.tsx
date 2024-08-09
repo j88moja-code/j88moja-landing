@@ -14,9 +14,15 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: 'J88Moja Systems',
+  title: {
+    default: 'J88Moja Systems',
+    template: '%s - J88Moja Systems',
+  },
   description:
     'Empowering Continuous Improvement through Technology with Innovative Solutions.',
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en'>
       <head />
       <body
         className={cn(
