@@ -28,7 +28,7 @@ const content: FAQItem[] = [
   {
     question: 'What industries do you serve?',
     answer:
-      'We specialize in serving pulp and paper industry, with a strong focus on the tissue manufacturing operations. Our deep expertise and innovative solutions, however, extend beyond these boundaries, allowing us to cater to a wide range of sectors. We pride ourselves on crafting tailored solutions that address the specific challenges and unique needs of each industry, ensuring maximum efficiency, sustainability, and success for our clients.',
+      'We specialize in serving pulp and paper industry. Our deep expertise and innovative solutions, however, extend beyond these boundaries, allowing us to cater to a wide range of sectors. We pride ourselves on crafting tailored solutions that address the specific challenges and unique needs of each industry, ensuring maximum efficiency, sustainability, and success for our clients.',
   },
   {
     question: 'Can I customize the solutions to fit my specific needs?',
