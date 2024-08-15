@@ -29,11 +29,11 @@ export default function Hero() {
                 <Button
                   asChild
                   variant='default'
-                  className='dark:shadow-primary-500/40 shadow-primary-500/50 dark:hover:shadow-primary-500/50 group relative inline-flex w-full items-center justify-center rounded-full border border-slate-100/40 px-4 py-2 text-sm font-medium text-zinc-900 shadow-lg transition duration-300 ease-in-out hover:shadow-xl dark:border-slate-700 dark:text-white dark:hover:shadow-xl'
+                  className='group relative inline-flex w-full items-center justify-center rounded-full border border-slate-100/40 px-4 py-2 text-sm font-medium shadow-lg shadow-primary-500/50 transition duration-300 ease-in-out hover:shadow-xl dark:border-slate-700 dark:shadow-primary-500/40 dark:hover:shadow-primary-500/50'
                 >
-                  <span className='relative inline-flex items-center text-white dark:text-black'>
+                  <span>
                     Book Consultation{' '}
-                    <span className='text-primary-500 ml-1 tracking-normal transition-transform duration-150 ease-in-out group-hover:translate-x-1'>
+                    <span className='ml-1 tracking-normal text-primary-500 transition-transform duration-150 ease-in-out group-hover:translate-x-1'>
                       &rarr;
                     </span>
                   </span>
