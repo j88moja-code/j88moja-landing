@@ -13,7 +13,7 @@ export const PrivacyPolicy = () => {
             personal information and your right to privacy. If you have any
             questions or concerns about this privacy notice or our practices
             with regard to your personal information, please contact us at
-            support@yourcompany.com.
+            info@j88moja.tech.
           </p>
 
           <h2 className='mb-2 text-2xl font-bold'>1. Information We Collect</h2>
