@@ -53,7 +53,7 @@ export default function Products() {
 
         {/* Subheading */}
         <h4 className='mt-2 text-center text-xl font-light text-gray-600 opacity-80 dark:text-gray-300 md:text-2xl'>
-          <Balancer>
+          <Balancer className="font-semibold">
             Explore our product that can be tailored to meet your unique needs.
           </Balancer>
         </h4>
