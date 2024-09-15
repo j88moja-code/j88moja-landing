@@ -25,13 +25,6 @@ type PriceText = {
 const priceTexts: PriceText[] = [
   {
     icon: <Coins className='h-6 w-6' />,
-    title: 'Basic',
-    href: '/#contact',
-    description: 'Give your team the tools they need to grow.',
-    cta: 'Contact Us',
-  },
-  {
-    icon: <Coins className='h-6 w-6' />,
     title: 'Standard',
     href: '/#contact',
     description: 'Powerful features for your business operations.',

@@ -105,7 +105,7 @@ export default function Hero() {
               <Link href={href} key={index}>
                 <Button
                   asChild
-                  className="group flex w-full items-center justify-center whitespace-nowrap rounded bg-gradient-to-r bg-gray-500 px-4 py-2 font-medium text-zinc-900 transition-all duration-150 ease-in-out hover:bg-black hover:text-white dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+                  className="group flex w-full items-center justify-center whitespace-nowrap rounded bg-gray-500 px-4 py-2 font-medium text-zinc-900 transition-all duration-150 ease-in-out hover:bg-gradient-to-r from-orange-500 via-orange-200 to-green-500 hover:text-white dark:bg-gray-700 dark:text-white dark:hover:bg-gradient-to-r from-orange-500 via-orange-200 to-green-500"
                   variant="ghost"
                 >
                   <span className="relative inline-flex items-center">
