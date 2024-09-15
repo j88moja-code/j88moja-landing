@@ -8,11 +8,11 @@ import { Separator } from '@/components/ui/separator';
 
 export default function About() {
   return (
-    <Section id='about'>
+    <Section id='relative about'>
       <div className='flex items-center justify-center'>
         <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
       </div>
-      <Container>
+      <Container className='bg-slate-200 rounded'>
         <h2 className='text-3xl font-bold'>CMOOS&#8482;</h2>
         <div className='flex flex-col gap-6 space-y-4'>
           <p className='mt-4 text-lg opacity-70'>

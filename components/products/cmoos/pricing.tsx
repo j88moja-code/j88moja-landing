@@ -48,7 +48,7 @@ const priceTexts: PriceText[] = [
 const Feature = () => {
   return (
     <Section id='pricing'>
-      <Container className='not-prose'>
+      <Container className='not-prose bg-slate-200'>
         <div className='flex items-center justify-center'>
           <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
         </div>
@@ -65,7 +65,7 @@ const Feature = () => {
               ({ icon, title, description, href, cta }, index) => (
                 <Link
                   href={`${href}`}
-                  className='flex flex-col justify-between gap-6 rounded-lg border p-6 transition-all hover:-mt-2 hover:mb-2'
+                  className='flex flex-col justify-between gap-6 rounded-lg border p-6 transition-all hover:-mt-2 hover:mb-2 bg-slate-100'
                   key={index}
                 >
                   <div className='grid gap-4'>
