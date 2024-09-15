@@ -106,7 +106,7 @@ export default function Features() {
       <div className='flex items-center justify-center'>
         <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
       </div>
-      <Container className='bg-slate-200 rounded'>
+      <Container className='bg-slate-200 dark:bg-slate-800'>
         <h2 className='text-3xl font-bold'>Features</h2>
         <Carousel setApi={setApi} className='mx-auto w-full max-w-2xl'>
           <CarouselContent>
