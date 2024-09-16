@@ -14,9 +14,6 @@ import { Linkedin } from 'lucide-react';
 // Local component imports
 import { Section, Container } from '@/components/craft';
 
-// Custom components
-import { ModeToggle } from './theme-toggle';
-
 // Asset imports
 import Logo from '@/public/j88moja-logo.png';
 
@@ -102,7 +99,6 @@ export default function Footer() {
                 <Linkedin className='h-5 w-5 text-gray-700 transition-colors duration-150 hover:text-black dark:text-gray-300 dark:hover:text-white' />
               </Link>
             </Button>
-            <ModeToggle />
           </div>
 
           <p className='text-center text-sm text-gray-400 md:text-left'>

@@ -52,7 +52,7 @@ const aboutTexts: AboutText[] = [
 export default function About() {
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [, setCurrent] = useState(0);
-  const [, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!api) return;
@@ -63,16 +63,25 @@ export default function About() {
     api.on('select', () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
-  }, [api]);
+
+    const intervalId = setInterval(() => {
+      if (api) {
+        const nextIndex = (api.selectedScrollSnap() + 1) % count;
+        api.scrollTo(nextIndex);
+      }
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [api, count]);
 
   return (
-    <Section id='benefits' >
+    <Section id='benefits'>
       <Container className='flex flex-col items-center gap-6'>
         <div className='flex items-center justify-center'>
           <Separator className='mt-3 h-0.5 w-80 bg-slate-100/20' />
         </div>
 
-        <Carousel setApi={setApi} className='mx-auto w-full max-w-2xl'>
+        <Carousel setApi={setApi} className='mx-auto w-full max-w-2xl group'>
           <CarouselContent>
             {aboutTexts.map((text) => (
               <CarouselItem key={text.id}>
@@ -87,18 +96,18 @@ export default function About() {
                       className='rounded-lg'
                       placeholder='blur'
                     />
-                    <p className='mt-4 text-lg'>
-                      <Balancer>{text.description}</Balancer>
+                    <p className='mt-4 text-lg border-cyan-950'>
+                      <Balancer className="container dark:bg-slate-200 bg-gray-200 p-2 rounded dark:text-black">{text.description}</Balancer>
                     </p>
                   </div>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='absolute left-4 top-1/2 -translate-y-1/2 transform cursor-pointer rounded-full bg-gray-800 p-2 text-white hover:bg-gray-700'>
+          <CarouselPrevious className='absolute left-4 top-1/2 -translate-y-1/2 transform cursor-pointer rounded-full bg-gray-800 p-2 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-700'>
             Prev
           </CarouselPrevious>
-          <CarouselNext className='absolute right-4 top-1/2 -translate-y-1/2 transform cursor-pointer rounded-full bg-gray-800 p-2 text-white hover:bg-gray-700'>
+          <CarouselNext className='absolute right-4 top-1/2 -translate-y-1/2 transform cursor-pointer rounded-full bg-gray-800 p-2 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-700'>
             Next
           </CarouselNext>
         </Carousel>
