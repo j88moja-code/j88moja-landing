@@ -31,7 +31,7 @@
     "input-otp": "^1.2.4",
     "lucide-react": "^0.424.0",
     "mailgun.js": "^10.2.3",
-    "next": "14.2.5",
+    "next": "14.2.12",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-calendly": "^4.3.1",
