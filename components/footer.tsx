@@ -92,7 +92,7 @@ export default function Footer() {
     */}
             <Button variant='outline' size='icon' asChild>
               <Link
-                href='https://linkedin.com/company/J88MojaSystems'
+                href='https://linkedin.com/company/j88moja-systems'
                 target='_blank'
                 rel='noopener noreferrer'
               >
