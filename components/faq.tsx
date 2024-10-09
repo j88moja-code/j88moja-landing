@@ -28,7 +28,7 @@ const content: FAQItem[] = [
   {
     question: 'What industries do you serve?',
     answer:
-      'We specialize in serving pulp and paper industry. Our deep expertise and innovative solutions, however, extend beyond these boundaries, allowing us to cater to a wide range of sectors. We pride ourselves on crafting tailored solutions that address the specific challenges and unique needs of each industry, ensuring maximum efficiency, sustainability, and success for our clients.',
+      'We specialize in serving SMEs in the manufacturing sector. Our deep expertise and innovative solutions, however, extend beyond these boundaries, allowing us to cater to a wide range of sectors. We pride ourselves on crafting tailored solutions that address the specific challenges and unique needs of each industry, ensuring maximum efficiency, sustainability, and success for our clients.',
   },
   {
     question: 'Can I customize the solutions to fit my specific needs?',
@@ -38,7 +38,7 @@ const content: FAQItem[] = [
   {
     question: 'What support options are available for customers?',
     answer:
-      'We provide comprehensive customer support, including onboarding assistance, training sessions, and 24/7 technical support to ensure you get the most out of our solutions.',
+      'We provide comprehensive customer support, including onboarding assistance, training sessions, and technical support to ensure you get the most out of our solutions.',
   },
 ];
 
