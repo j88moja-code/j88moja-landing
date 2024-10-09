@@ -99,7 +99,7 @@ export default function Hero() {
               },
               {
                 href: '#faq',
-                label: 'Frequently Asked Questions',
+                label: 'FAQ',
               },
             ].map(({ href, label }, index) => (
               <Link href={href} key={index}>
