@@ -25,7 +25,7 @@ export default function Hero() {
       <Particles className="absolute inset-0 -z-10" />
       <Container>
         <ModeToggle />
-        <div className="px-8 text-center">
+        <div className="px-8 m-8 text-center">
           <h1
             className="bg-gradient-to-r from-black to-blue-500 bg-clip-text pb-4 text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl dark:from-white dark:to-indigo-400"
             data-aos="fade-down"
