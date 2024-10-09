@@ -80,7 +80,7 @@ export default function Hero() {
           </div>
 
           <div
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-14"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 m-14"
             data-aos="fade-up"
             data-aos-delay="600"
           >
