@@ -34,12 +34,12 @@ export default function Footer() {
                 className='transition-opacity duration-150 hover:opacity-75'
               />
             </Link>
-            <p className='max-w-md'>
-              <Balancer>
-                J88Moja (PTY) Ltd t/a J88Moja Systems is dedicated to empowering
-                businesses with innovative technology solutions designed to
-                drive growth and efficiency.
-              </Balancer>
+            <p className='max-w-full text-sm'>
+              {/* <Balancer> */}
+              J88Moja (PTY) Ltd t/a J88Moja Systems is dedicated to empowering
+              businesses with innovative technology solutions designed to drive
+              growth and efficiency.
+              {/* </Balancer> */}
             </p>
           </div>
 
