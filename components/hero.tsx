@@ -87,15 +87,15 @@ export default function Hero() {
             {[
               {
                 href: '#features',
-                label: 'Explore Services',
+                label: 'Services',
               },
               {
                 href: '#benefits',
-                label: 'Explore Benefits',
+                label: 'Benefits',
               },
               {
                 href: '#products',
-                label: 'Explore Product',
+                label: 'Product',
               },
               {
                 href: '#faq',
