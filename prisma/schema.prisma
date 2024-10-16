@@ -15,19 +15,19 @@ datasource db {
 }
 
 
-model ContactUs {
+model J88MojaContactList {
   id String @id @default(uuid()) @unique
-  email String
+  email String @unique
   fullName String
-  position String
   message String
 
   createdAt DateTime @default(now())
 }
 
-model CMOOSMailingList {
+model RequestCMOOSDemo {
   id String @id @default(uuid()) @unique
-  email String
+  fullName String
+  email String @unique
 
   createdAt DateTime @default(now())
 }

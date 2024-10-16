@@ -15,7 +15,7 @@
 
 # production
 /build
-
+LICENSE
 # misc
 .DS_Store
 *.pem
