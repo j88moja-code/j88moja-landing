@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { ReactTyped } from "react-typed";
 
 const Hero = () => {
   return (
@@ -12,7 +15,23 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Transforming Your Business with End-to-End Software Solutions
+                  Transforming Your Business with
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500  bg-clip-text text-transparent dark:from-pink-500 dark:via-purple-500 dark:to-blue-500">
+                    <ReactTyped
+                      strings={[
+                        "End-to-End Software Solutions",
+                        "Customized Software Solutions",
+                        "Automation and Optimization Tools",
+                        "Scalable Software Solutions",
+                      ]}
+                      typeSpeed={50}
+                      backSpeed={50}
+                      showCursor
+                      cursorChar="|"
+                      loop
+                    />
+                  </span>
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
                   Empowering organizations to innovate, optimize, and drive
@@ -31,6 +50,13 @@ const Hero = () => {
                     className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
                   >
                     Book a Consultation
+                  </Link>
+                  {/* Get CMOOS Link on on mobile */}
+                  <Link
+                    href="/request-a-demo"
+                    className="inline-block rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80 sm:hidden"
+                  >
+                    Get CMOOS
                   </Link>
                 </div>
               </div>
