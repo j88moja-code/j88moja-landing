@@ -8,7 +8,7 @@ const Features = () => {
       <section id="cmoos" className="py-16 md:py-20 lg:py-28">
         <div className="container">
           <SectionTitle
-            title="Meet CMOOS"
+            title="CMOOS"
             paragraph="CMOOS (Centralised Management of Operations System) is a web-based platform that allows users to easily manage day-to-day data capturing, reporting and analysis for various operations needs."
             center
           />

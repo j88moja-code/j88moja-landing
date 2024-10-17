@@ -1,12 +1,13 @@
 {
-  "name": "startup-nextjs-template",
+  "name": "j88moja-landing-page",
   "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.21.0",
