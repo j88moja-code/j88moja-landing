@@ -25,6 +25,12 @@ export const metadata: Metadata = {
     locale: "en-US",
     siteName: "J88Moja Systems",
   },
+  twitter: {
+    card: "summary_large_image",
+  },
+  icons: {
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function Home() {
