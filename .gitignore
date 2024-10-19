@@ -37,8 +37,8 @@ yarn-error.log*
 next-env.d.ts
 
 # for now
-route.tsx
-arcjet.tsx
+# route.tsx
+# arcjet.tsx
 nodemailer.tsx
-superbase.tsx
+# superbase.tsx
 Loader.tsx

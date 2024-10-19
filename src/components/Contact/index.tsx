@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
-import { postContactUsData } from "@/app/api/actions";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +10,12 @@ const Contact = () => {
     message: "",
     email: "",
   });
-  const [loading, setLoading] = useState(false);
+  const [isFormDataSubmitted, setIsFormDataSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isErrorState, setIsErrorState] = useState(false);
+  const [infoMessage, setInfoMessage] = useState(
+    "We would love to hear from you. Please fill out the form below and we will get back to you shortly.",
+  );
 
   // Handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,23 +23,38 @@ const Contact = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Validate the email, message and name fields
-  const validateForm = () => {
-    const { name, email, message } = formData;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!name.trim()) {
-      toast.error("Please enter your full name.");
-      return false;
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/contact-us", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.data === "Success") {
+        setIsFormDataSubmitted(true);
+        setInfoMessage(
+          "Thank you for your message. We will get back to you shortly.",
+        );
+      } else {
+        toast.error("Something went wrong. Please try again later.");
+        setIsErrorState(true);
+        setInfoMessage(result.error || "An error occurred");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again later.");
+      setIsErrorState(true);
+      setInfoMessage("An error occurred");
+    } finally {
+      setIsLoading(false);
     }
-    if (!email.trim() || !emailRegex.test(email)) {
-      toast.error("Please enter a valid email address.");
-      return false;
-    }
-    if (!message.trim()) {
-      toast.error("Please enter your message.");
-      return false;
-    }
-    return true;
   };
 
   return (
@@ -47,109 +67,128 @@ const Contact = () => {
               data-wow-delay=".15s
               "
             >
-              <h2 className="mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
-                Contact Us
-              </h2>
-              <p className="mb-12 text-base font-medium text-body-color">
-                We’d love to hear from you! Whether you have a question about
-                features, pricing, or anything else, our team is ready to answer
-                all your questions.
-              </p>
-              <form
-                action={async (formData) => {
-                  if (validateForm()) {
-                    setLoading(true);
-                    await postContactUsData(formData);
-                    setLoading(false);
-                    toast.success(
-                      "Thanks for your message. We'll get back to you shortly.",
-                    );
-                    setFormData({
-                      name: "",
-                      message: "",
-                      email: "",
-                    });
-                  } else {
-                    toast.error(
-                      "Something went wrong. Please try again later.",
-                    );
-                    setFormData({
-                      name: "",
-                      message: "",
-                      email: "",
-                    });
-                    setLoading(false);
-                  }
-                }}
-              >
-                <div className="-mx-4 flex flex-wrap">
-                  <div className="w-full px-4 md:w-1/2">
-                    <div className="mb-8">
-                      <label
-                        htmlFor="name"
-                        className="mb-3 block text-sm font-medium text-dark dark:text-white"
-                      >
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Enter your name"
-                        className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full px-4 md:w-1/2">
-                    <div className="mb-8">
-                      <label
-                        htmlFor="email"
-                        className="mb-3 block text-sm font-medium text-dark dark:text-white"
-                      >
-                        Your Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="Enter your email"
-                        className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full px-4">
-                    <div className="mb-8">
-                      <label
-                        htmlFor="message"
-                        className="mb-3 block text-sm font-medium text-dark dark:text-white"
-                      >
-                        Your Message
-                      </label>
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        rows={5}
-                        minLength={30}
-                        maxLength={400}
-                        // @ts-expect-error
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Enter your Message"
-                        className="border-stroke w-full resize-none rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full px-4">
-                    <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark">
-                      {loading ? "Sending..." : "Send Message"}
-                    </button>
-                  </div>
+              {isLoading ? (
+                <div className="flex items-center justify-center">
+                  <Image
+                    className="w-auto justify-center"
+                    src={"/loading.gif"}
+                    alt="loading"
+                    width={80}
+                    height={80}
+                  ></Image>
                 </div>
-              </form>
+              ) : (
+                <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
+                  {isFormDataSubmitted
+                    ? "Thanks for your message!"
+                    : isErrorState
+                      ? "Something went wrong. Please try again later."
+                      : "Get in touch"}
+                </h3>
+              )}
+              {isErrorState ? (
+                <p className="mb-11 text-center text-base font-medium text-red-500">
+                  {infoMessage}
+                </p>
+              ) : (
+                <p className="mb-11 text-center text-base font-medium text-body-color">
+                  {infoMessage}
+                </p>
+              )}
+              {!isFormDataSubmitted && !isErrorState ? (
+                <form onSubmit={handleSubmit}>
+                  <div className="-mx-4 flex flex-wrap">
+                    <div className="w-full px-4 md:w-1/2">
+                      <div className="mb-8">
+                        <label
+                          htmlFor="name"
+                          className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                        >
+                          Your Name
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Enter your name"
+                          className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                        />
+                      </div>
+                    </div>
+                    <div className="w-full px-4 md:w-1/2">
+                      <div className="mb-8">
+                        <label
+                          htmlFor="email"
+                          className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                        >
+                          Your Email
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          placeholder="Enter your email"
+                          className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                        />
+                      </div>
+                    </div>
+                    <div className="w-full px-4">
+                      <div className="mb-8">
+                        <label
+                          htmlFor="message"
+                          className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                        >
+                          Your Message
+                        </label>
+                        <textarea
+                          name="message"
+                          value={formData.message}
+                          rows={5}
+                          // minLength={30}
+                          maxLength={300}
+                          // @ts-expect-error
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Enter your Message"
+                          className="border-stroke w-full resize-none rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                        />
+                      </div>
+                    </div>
+                    <div className="w-full px-4">
+                      <button
+                        type="submit"
+                        className="w-full rounded-sm bg-primary px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-opacity-90"
+                        disabled={isLoading}
+                      >
+                        {isLoading ? "Sending..." : "Send Message"}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              ) : (
+                <button
+                  type="button"
+                  className="w-full rounded-sm bg-primary px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-opacity-90"
+                  onClick={() => {
+                    setFormData({
+                      name: "",
+                      email: "",
+                      message: "",
+                    });
+                    setIsFormDataSubmitted(false);
+                    setIsErrorState(false);
+                    setInfoMessage(
+                      "We would love to hear from you. Please fill out the form below and we will get back to you shortly.",
+                    );
+                  }}
+                >
+                  {isErrorState ? "Try Again." : "Get in touch"}
+                </button>
+              )}
             </div>
           </div>
           {/* <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
