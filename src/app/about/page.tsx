@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About | J88Moja Systems",
-  description: "This is About Page for J88Moja Systems",
+  description: "About J88Moja Systems",
   // other metadata
 };
 

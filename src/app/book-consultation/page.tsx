@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Book A Consultation | J88Moja Systems",
-  description: "This is Book A Consultation Page for J88Moja Systems",
+  description: "Book a free consultation with us, we are ready to help",
   // other metadata
 };
 

@@ -6,7 +6,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
-import "node_modules/react-modal-video/css/modal-video.css";
 import "../styles/index.css";
 
 const inter = Inter({ subsets: ["latin"] });

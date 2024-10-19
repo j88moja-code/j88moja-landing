@@ -9,14 +9,21 @@ import Services from "@/components/Services";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
   title: {
     default: "J88Moja Systems",
     template: "%s | J88Moja Systems",
   },
   description:
     "Empowering Continuous Improvement through Technology with Innovative Software Solutions.",
-  twitter: {
-    card: "summary_large_image",
+  openGraph: {
+    title: "J88Moja Systems",
+    description:
+      "Empowering Continuous Improvement through Technology with Innovative Software Solutions.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+    type: "website",
+    locale: "en-US",
+    siteName: "J88Moja Systems",
   },
 };
 

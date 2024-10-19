@@ -6,8 +6,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Confirmation | J88Moja Systems",
-  description:
-    "This is Confirmation Page after successful CMOOS Demo App Request",
+  description: "Confirmation after successful CMOOS Demo App Request",
   // other metadata
 };
 
