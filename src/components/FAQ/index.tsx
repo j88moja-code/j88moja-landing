@@ -38,7 +38,7 @@ const FAQs = () => {
   ];
 
   return (
-    <section id="faq" className="relative z-10 md:py-20 lg:py-28">
+    <section id="faq" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
           title="Frequently Asked Questions"
