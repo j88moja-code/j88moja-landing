@@ -109,7 +109,10 @@ export async function POST(request: NextRequest) {
     if (emailExists) {
       // console.log("Email already exists. Please try again.");
       return NextResponse.json(
-        { error: "Email already exists. Expect a reply within 24 hours." },
+        {
+          error:
+            "Contact email already received. Expect a reply within 24 hours.",
+        },
         { status: 500 },
       );
     } else {

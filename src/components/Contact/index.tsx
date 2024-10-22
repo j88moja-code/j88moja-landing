@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -79,11 +80,21 @@ const Contact = () => {
                 </div>
               ) : (
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  {isFormDataSubmitted
-                    ? "Thanks for your message!"
-                    : isErrorState
-                      ? "Something went wrong. Please try again later."
-                      : "Get in touch"}
+                  {isFormDataSubmitted ? (
+                    <div className="flex items-center justify-center">
+                      <Image
+                        className="h-24 w-24 justify-center"
+                        src={"/sent.svg"}
+                        alt="loading"
+                        width={30}
+                        height={30}
+                      />
+                    </div>
+                  ) : isErrorState ? (
+                    "Something went wrong. Please try again later."
+                  ) : (
+                    "Get in touch"
+                  )}
                 </h3>
               )}
               {isErrorState ? (
@@ -169,7 +180,7 @@ const Contact = () => {
                     </div>
                   </div>
                 </form>
-              ) : (
+              ) : isErrorState ? (
                 <button
                   type="button"
                   className="w-full rounded-sm bg-primary px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-opacity-90"
@@ -186,8 +197,17 @@ const Contact = () => {
                     );
                   }}
                 >
-                  {isErrorState ? "Try Again." : "Get in touch"}
+                  Try Again
                 </button>
+              ) : (
+                <div className="w-full px-4">
+                  <Link
+                    href="/"
+                    className="w-full rounded-sm bg-primary px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-opacity-90 "
+                  >
+                    Back to Home
+                  </Link>
+                </div>
               )}
             </div>
           </div>
