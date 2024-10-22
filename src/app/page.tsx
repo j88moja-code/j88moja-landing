@@ -3,6 +3,7 @@ import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import ScrollUp from "@/components/Common/ScrollUp";
 import Calendly from "@/components/Calendly";
 import Contact from "@/components/Contact";
+import FAQs from "@/components/FAQ";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -43,6 +44,7 @@ export default function Home() {
       <AboutSectionOne />
       <AboutSectionTwo />
       <Services />
+      <FAQs />
       <Contact />
     </>
   );
