@@ -15,7 +15,7 @@ export default arcjet({
     }),
     fixedWindow({
       mode: "LIVE",
-      match: "/api/request-demo",
+      // match: "/api/request-demo",
       window: "2m",
       max: 3,
     }),
