@@ -42,3 +42,5 @@ next-env.d.ts
 nodemailer.tsx
 # superbase.tsx
 Loader.tsx
+
+/generated/prisma

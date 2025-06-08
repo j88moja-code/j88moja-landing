@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import arcjet from "../../lib/arcjet";
 import DataForm from "form-data";
 import Mailgun from "mailgun.js";
-import supabase from "../../lib/superbase";
+import prisma from "../../lib/prisma";
 import { v4 as uuidv4 } from "uuid";
 
 const API_KEY = process.env.MAILGUN_API_KEY || "";
@@ -15,143 +15,96 @@ export async function GET(req: NextRequest) {
   const decision = await arcjet.protect(req, { email });
   if (decision.isDenied()) {
     if (decision.reason.isShield()) {
-      console.log("Suspicious action detected!");
-      return NextResponse.json(
-        { error: "Suspicious action detected!" },
-        { status: 403 },
-      );
+      return NextResponse.json({ error: "Suspicious action detected!" }, { status: 403 });
     }
     if (decision.reason.isBot()) {
-      console.log("Looks like you might be a bot!");
-      return NextResponse.json(
-        { error: "Looks like you might be a bot!" },
-        { status: 403 },
-      );
+      return NextResponse.json({ error: "Looks like you might be a bot!" }, { status: 403 });
     }
   }
+
   return NextResponse.json({ data: "Hello World!" });
 }
 
 export async function POST(req: NextRequest) {
-  const data = await req.json();
-
-  const email = data.email;
-  const name = data.name;
+  const { name, email } = await req.json();
 
   const decision = await arcjet.protect(req, { email });
   if (decision.isDenied()) {
     if (decision.reason.isRateLimit()) {
       const resetTime = decision.reason.resetTime;
-      if (!resetTime) {
-        return NextResponse.json(
-          { error: "Too many requests. Try again later." },
-          { status: 429 },
-        );
-      }
-
-      const remainingTime = Math.max(
-        0,
-        Math.floor((resetTime.getTime() - Date.now()) / 1000),
-      );
-      const timeUnit = remainingTime > 60 ? "minutes" : "seconds";
-      const timeValue =
-        timeUnit === "minutes" ? Math.ceil(remainingTime / 60) : remainingTime;
+      const remaining = resetTime ? Math.floor((resetTime.getTime() - Date.now()) / 1000) : 60;
+      const unit = remaining > 60 ? "minutes" : "seconds";
+      const time = unit === "minutes" ? Math.ceil(remaining / 60) : remaining;
 
       return NextResponse.json(
-        { error: `Too many requests. Try again in ${timeValue} ${timeUnit}.` },
-        { status: 429 },
+        { error: `Too many requests. Try again in ${time} ${unit}.` },
+        { status: 429 }
       );
     }
+
     if (decision.reason.isEmail()) {
-      const errorType = decision.reason.emailTypes;
-      if (errorType.includes("INVALID")) {
-        return NextResponse.json(
-          { error: "Invalid email format. Check your spelling." },
-          { status: 400 },
-        );
-      } else if (errorType.includes("DISPOSABLE")) {
-        return NextResponse.json(
-          { error: "Disposable email address. Check your spelling." },
-          { status: 400 },
-        );
-      } else if (errorType.includes("NO_MX_RECORDS")) {
-        return NextResponse.json(
-          { error: "Email without an MX record. Check your spelling." },
-          { status: 400 },
-        );
-      } else {
-        return NextResponse.json(
-          { error: "Invalid email. Check your spelling." },
-          { status: 400 },
-        );
+      const types = decision.reason.emailTypes;
+      if (types.includes("INVALID")) {
+        return NextResponse.json({ error: "Invalid email format. Check your spelling." }, { status: 400 });
       }
+      if (types.includes("DISPOSABLE")) {
+        return NextResponse.json({ error: "Disposable email address. Check your spelling." }, { status: 400 });
+      }
+      if (types.includes("NO_MX_RECORDS")) {
+        return NextResponse.json({ error: "Email without an MX record. Check your spelling." }, { status: 400 });
+      }
+
+      return NextResponse.json({ error: "Invalid email. Check your spelling." }, { status: 400 });
     }
   }
-  const checkEmailExists = async (email: string) => {
-    const { data, error } = await supabase
-      .from("demo_requests")
-      .select("*")
-      .eq("email", email);
 
-    if (error) {
-      console.log("Error checking email:" + error);
-      return false;
+  try {
+    // Check if email already exists in confirmed requests
+    const existing = await prisma.demoRequest.findUnique({ where: { email } });
+    if (existing) {
+      return NextResponse.json({ error: "Email already exists. Please try again." }, { status: 400 });
     }
 
-    return data.length > 0;
-  };
+    const token = uuidv4();
 
-  const handleFormSubmission = async (name: string, email: string) => {
-    const emailExists = await checkEmailExists(email);
+    // Create pending request
+    await prisma.pendingDemoRequest.create({
+      data: {
+        name,
+        email,
+        token,
+      },
+    });
 
-    if (emailExists) {
-      // console.log("Email already exists. Please try again.");
-      return NextResponse.json(
-        { error: "Email already exists. Please try again." },
-        { status: 500 },
-      );
-    } else {
-      const token = uuidv4();
+    // Send confirmation email
+    const mailgun = new Mailgun(DataForm);
+    const mg = mailgun.client({ username: "api", key: API_KEY });
 
-      const { error } = await supabase
-        .from("pending_demo_request")
-        .insert([{ name, email, token }]);
+    const confirmationUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/confirm?token=${token}`;
 
-      if (error) {
-        // console.log("Database error:" + error.message);
-        return NextResponse.json({ error: "Database error" }, { status: 500 });
-      }
+    await mg.messages.create(DOMAIN, {
+      from: "Request CMOOS Demo <no-reply@mg.j88moja.tech>",
+      to: email,
+      subject: "Confirm CMOOS Demo Request",
+      text: `
+Hello ${name},
 
-      // Send email
-      const mailgun = new Mailgun(DataForm);
-      const mg = mailgun.client({
-        username: "api",
-        key: API_KEY,
-      });
-      const messageData = {
-        from: "Request CMOOS Demo <no-reply@mg.j88moja.tech>",
-        to: email,
-        subject: "Confirm CMOOS Demo Request",
-        text: `
-            Hello ${name},
-            Thank you for your interest in CMOOS. Please confirm your request by clicking on the link below:
-            ${process.env.NEXT_PUBLIC_BASE_URL}/api/confirm?token=${token}
-            Thanks,
-            J88Moja Systems`,
-        html: `
-            <h1 style="font-size: 1.5rem; font-weight: 700;">Hello ${name}</h1>
-            <p style="font-size: 1.125rem; color: #4a5568;">Thank you for your interest in CMOOS. Please confirm your request by clicking on the link below:</p>
-            <p><a href="${process.env.NEXT_PUBLIC_BASE_URL}/api/confirm?token=${token}" style="display: block; width: 100%; font-size: 16px; background-color: #38b2ac; color: #ffffff; padding: 0.5rem; border-radius: 0.25rem; text-align: center; text-decoration: none; transition: background-color 0.2s;">Confirm Request</a></p>
-            <p style="font-size: 1.120rem; color: #4a5568;">Thanks, </p>
-            <p style="font-size: 1.120rem; color: #4a5568;">J88Moja Systems</p>
-      `,
-      };
+Thank you for your interest in CMOOS. Please confirm your request by clicking on the link below:
 
-      await mg.messages.create(DOMAIN, messageData);
-      // await sendRequestADemoEmail(name, email, token);
-      return NextResponse.json({ data: "Success" }, { status: 200 });
-    }
-  };
+${confirmationUrl}
 
-  return await handleFormSubmission(name, email);
+Thanks,
+J88Moja Systems`,
+      html: `
+<h1>Hello ${name}</h1>
+<p>Thank you for your interest in CMOOS. Please confirm your request by clicking on the link below:</p>
+<p><a href="${confirmationUrl}" style="background-color:#38b2ac;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;">Confirm Request</a></p>
+<p>Thanks,<br/>J88Moja Systems</p>`,
+    });
+
+    return NextResponse.json({ data: "Success" }, { status: 200 });
+  } catch (error) {
+    console.error("Request submission error:", error);
+    return NextResponse.json({ error: "Server error. Try again later." }, { status: 500 });
+  }
 }
