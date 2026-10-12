@@ -5,11 +5,11 @@ import featuresData from "./featuresData";
 const Features = () => {
   return (
     <>
-      <section id="cmoos" className="py-16 md:py-20 lg:py-28">
+      <section id="tissuemate" className="py-16 md:py-20 lg:py-28">
         <div className="container">
           <SectionTitle
-            title="CMOOS"
-            paragraph="CMOOS (Centralised Management of Operations System) is a web-based platform that allows users to easily manage day-to-day data capturing, reporting and analysis for various operations needs."
+            title="What TissueMate does on your plant floor"
+            paragraph="Most tissue plants still track shifts on paper and in spreadsheets. TissueMate puts production and downtime in one place, so you know where the hours went."
             center
           />
 

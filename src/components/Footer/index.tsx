@@ -20,9 +20,9 @@ const Footer = () => {
                   />
                 </Link>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  J88Moja (PTY) Ltd t/a J88Moja Systems is dedicated to
-                  empowering businesses with innovative technology solutions
-                  designed to drive growth and efficiency.
+                  J88Moja (Pty) Ltd t/a J88Moja Systems builds TissueMate,
+                  shift production and downtime reporting for tissue and
+                  paper plants.
                 </p>
                 <div className="flex items-center">
                   {/* <a
@@ -111,10 +111,10 @@ const Footer = () => {
                 <ul>
                   <li>
                     <Link
-                      href="#services"
+                      href="/#tissuemate"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      Services
+                      TissueMate
                     </Link>
                   </li>
                   <li>

@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel an older run on the same branch when you push again
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Lint and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      # Build-time values. Real keys go in GitHub: Settings > Secrets and variables > Actions.
+      # The placeholders only let the build finish; nothing is sent anywhere during CI.
+      NEXT_PUBLIC_BASE_URL: https://www.j88moja.tech
+      ARCJET_KEY: ${{ secrets.ARCJET_KEY || 'ajkey_ci_placeholder' }}
+      MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY || 'ci-placeholder' }}
+      MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN || 'mg.example.com' }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://ci:ci@localhost:5432/ci' }}
+      NEXT_TELEMETRY_DISABLED: 1
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build

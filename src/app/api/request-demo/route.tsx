@@ -83,13 +83,13 @@ export async function POST(req: NextRequest) {
     const confirmationUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/confirm?token=${token}`;
 
     await mg.messages.create(DOMAIN, {
-      from: "Request CMOOS Demo <no-reply@mg.j88moja.tech>",
+      from: "Request TissueMate Demo <no-reply@mg.j88moja.tech>",
       to: email,
-      subject: "Confirm CMOOS Demo Request",
+      subject: "Confirm TissueMate Demo Request",
       text: `
 Hello ${name},
 
-Thank you for your interest in CMOOS. Please confirm your request by clicking on the link below:
+Thank you for your interest in TissueMate. Please confirm your request by clicking on the link below:
 
 ${confirmationUrl}
 
@@ -97,7 +97,7 @@ Thanks,
 J88Moja Systems`,
       html: `
 <h1>Hello ${name}</h1>
-<p>Thank you for your interest in CMOOS. Please confirm your request by clicking on the link below:</p>
+<p>Thank you for your interest in TissueMate. Please confirm your request by clicking on the link below:</p>
 <p><a href="${confirmationUrl}" style="background-color:#38b2ac;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;">Confirm Request</a></p>
 <p>Thanks,<br/>J88Moja Systems</p>`,
     });
