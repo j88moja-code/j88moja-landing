@@ -11,29 +11,34 @@ const FAQs = () => {
 
   const faqData = [
     {
-      question: "What is J88Moja Systems, and what do you offer?",
+      question: "What is TissueMate?",
       answer:
-        "J88Moja Systems is a technology(custom software development) company dedicated to providing innovative solutions that empower businesses to improve efficiency, enhance decision-making, and drive growth.",
+        "A web-based tool for tissue and paper plants to record shift production, stops and their causes in one place, and to see reports across shifts and machines.",
     },
     {
-      question: "How can J88Moja Systems improve our business operations?",
+      question: "Who is it for?",
       answer:
-        "We offer a suite of tools designed to automate processes, integrate data, and provide insights through advanced analytics. This helps streamline operations and optimize performance.",
+        "Smaller tissue mills where shift data still lives on paper logs, whiteboards or spreadsheets. It currently covers one paper machine per site, running day and night shifts.",
     },
     {
-      question: "What industries do you serve?",
+      question: "How long does setup take?",
       answer:
-        "We specialize in serving SMEs in the manufacturing sector. Our deep expertise and innovative solutions, however, extend beyond these boundaries, allowing us to cater to a wide range of sectors. We pride ourselves on crafting tailored solutions that address the specific challenges and unique needs of each industry, ensuring maximum efficiency, sustainability, and success for our clients.",
+        "About a week. I load your equipment list and product specifications, and train your supervisors.",
     },
     {
-      question: "Can I customize the solutions to fit my specific needs?",
+      question: "What does it cost?",
       answer:
-        "Absolutely! Our solutions are highly customizable, allowing you to adapt them to your specific business requirements and challenges.",
+        "Pilots start from R500/month. The price after the pilot is agreed before you start, so there are no surprises.",
     },
     {
-      question: "What support options are available for customers?",
+      question: "Do we need to install anything?",
       answer:
-        "We provide comprehensive customer support, including onboarding assistance, training sessions, and technical support to ensure you get the most out of our solutions.",
+        "No. TissueMate runs in a web browser, so supervisors can use the computers or devices you already have.",
+    },
+    {
+      question: "What happens to our data?",
+      answer:
+        "Your data belongs to you. Before a pilot starts, we sign an agreement covering what is stored, where, who can see it, and how it is deleted if you stop, in line with POPIA.",
     },
   ];
 
@@ -41,8 +46,8 @@ const FAQs = () => {
     <section id="faq" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title="Frequently Asked Questions"
-          paragraph="Here are some of our FAQs, if you have any other questions you'd like answered please feel free to get in touch."
+          title="Questions plant managers ask"
+          paragraph="Something else on your mind? Send a message below or book a call."
           center
           mb="80px"
         />
@@ -53,17 +58,19 @@ const FAQs = () => {
               key={index}
               className={`rounded-lg bg-white p-6 shadow-lg transition-transform dark:bg-gray-700 ${activeIndex === index ? "expanded" : ""}`}
             >
-              <div
-                className="flex cursor-pointer justify-between"
+              <button
+                type="button"
+                className="flex w-full cursor-pointer justify-between text-left"
                 onClick={() => toggleAccordion(index)}
+                aria-expanded={activeIndex === index}
               >
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">
                   {faq.question}
                 </h3>
-                <span className="text-primary dark:text-white">
+                <span aria-hidden="true" className="text-primary dark:text-white">
                   {activeIndex === index ? "-" : "+"}
                 </span>
-              </div>
+              </button>
               {activeIndex === index && (
                 <p className="mt-4 text-gray-600 dark:text-gray-300">
                   {faq.answer}

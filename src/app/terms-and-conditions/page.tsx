@@ -4,7 +4,7 @@ import TermsAndConditions from "@/components/TermsAndConditions";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions | J88Moja Systems",
-  description: "This is Terms and Conditions for CMOOS Demo App Request",
+  description: "This is Terms and Conditions for TissueMate Demo App Request",
   // other metadata
 };
 
@@ -13,7 +13,7 @@ const TermsAndConditionsPage = () => {
     <>
       <Breadcrumb
         pageName="Terms and Conditions"
-        description="Terms and Conditions for CMOOS Demo App Request"
+        description="Terms and Conditions for TissueMate Demo App Request"
       />
       <TermsAndConditions />
     </>

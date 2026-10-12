@@ -33,9 +33,9 @@ export async function handleConfirmation(req: Request) {
     const mg = mailgun.client({ username: "api", key: API_KEY });
 
     await mg.messages.create(DOMAIN, {
-      from: "Request CMOOS Demo <no-reply@mg.j88moja.tech>",
+      from: "Request TissueMate Demo <no-reply@mg.j88moja.tech>",
       to: "ntobekos@j88moja.tech",
-      subject: "CMOOS Demo Request",
+      subject: "TissueMate Demo Request",
       text: `New demo request:\nName: ${record.name}\nEmail: ${record.email}\nTime: ${new Date().toLocaleString("en-ZA")}`,
       html: `<h1>Hello Jobe</h1><p>Name: ${record.name}</p><p>Email: ${record.email}</p><p>Time: ${new Date().toLocaleString("en-ZA")}</p>`,
     });

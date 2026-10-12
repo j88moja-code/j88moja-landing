@@ -9,8 +9,8 @@ const Calendly = () => {
     <section id="calendly" className="relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title="We are ready to help"
-          paragraph="Book a free consultation to get started"
+          title="Book a 30-minute call"
+          paragraph="Tell me how you track production and downtime today, and I'll show you how TissueMate would work on your floor. No obligation."
           center
           mb="80px"
         />

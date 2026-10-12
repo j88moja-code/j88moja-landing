@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 export type Menu = {
   id: number;
   title: string;

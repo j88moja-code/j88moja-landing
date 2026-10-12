@@ -1,26 +1,26 @@
-import AboutSectionOne from "@/components/About/AboutSectionOne";
-import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import ScrollUp from "@/components/Common/ScrollUp";
 import Calendly from "@/components/Calendly";
 import Contact from "@/components/Contact";
 import FAQs from "@/components/FAQ";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
+import Founder from "@/components/Founder";
+import Pilot from "@/components/Pilot";
+import FreeLogSheet from "@/components/FreeLogSheet";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
   title: {
-    default: "J88Moja Systems",
+    default: "TissueMate | Shift production and downtime reporting for tissue plants",
     template: "%s | J88Moja Systems",
   },
   description:
-    "Empowering Continuous Improvement through Technology with Innovative Software Solutions.",
+    "TissueMate replaces paper shift logs and spreadsheets for tissue and paper plants. Record output, stops and their causes in one place. Pilots from R500/month.",
   openGraph: {
-    title: "J88Moja Systems",
+    title: "TissueMate by J88Moja Systems",
     description:
-      "Empowering Continuous Improvement through Technology with Innovative Software Solutions.",
+      "Shift production and downtime reporting for tissue and paper plants, built by a production lead with 15 years on tissue machines.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
     type: "website",
     locale: "en-US",
@@ -40,10 +40,10 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <Features />
+      <Founder />
+      <Pilot />
+      <FreeLogSheet />
       <Calendly />
-      <AboutSectionOne />
-      <AboutSectionTwo />
-      <Services />
       <FAQs />
       <Contact />
     </>
