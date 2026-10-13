@@ -12,11 +12,18 @@ const Footer = () => {
               <div className="mb-12 max-w-[360px] lg:mb-16">
                 <Link href="/" className="mb-8 inline-block">
                   <Image
-                    src="/images/logo/logo.svg"
-                    alt="logo"
-                    className="w-full"
-                    width={120}
-                    height={27}
+                    src="/images/logo/tissuemate-logo.svg"
+                    alt="TissueMate"
+                    width={184}
+                    height={40}
+                    className="dark:hidden"
+                  />
+                  <Image
+                    src="/images/logo/tissuemate-logo-dark.svg"
+                    alt="TissueMate"
+                    width={184}
+                    height={40}
+                    className="hidden dark:block"
                   />
                 </Link>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">

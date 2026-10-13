@@ -73,7 +73,7 @@ const Header = () => {
               </Link>
             </div> */}
             {/* Logo Section */}
-            <div className="w-20 max-w-full px-4 xl:mr-12">
+            <div className="w-48 max-w-full px-4 xl:mr-12">
               <Link
                 href="/"
                 className={`header-logo block w-full ${
@@ -81,10 +81,20 @@ const Header = () => {
                 } `}
               >
                 <Image
-                  src="/images/logo/logo.png" // Update with the correct path
-                  alt="J88Moja Logo"
-                  width={40} // Adjust the size as needed
-                  height={40}
+                  src="/images/logo/tissuemate-logo.svg"
+                  alt="TissueMate"
+                  width={147}
+                  height={32}
+                  priority
+                  className="dark:hidden"
+                />
+                <Image
+                  src="/images/logo/tissuemate-logo-dark.svg"
+                  alt="TissueMate"
+                  width={147}
+                  height={32}
+                  priority
+                  className="hidden dark:block"
                 />
               </Link>
             </div>
