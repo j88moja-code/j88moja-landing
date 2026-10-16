@@ -7,20 +7,21 @@ import Hero from "@/components/Hero";
 import Founder from "@/components/Founder";
 import Pilot from "@/components/Pilot";
 import FreeLogSheet from "@/components/FreeLogSheet";
+import CalculatorsTeaser from "@/components/Calculators/Teaser";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
   title: {
-    default: "TissueMate | Shift production and downtime reporting for tissue plants",
+    default: "FibreMate | Shift production, downtime and calculators for pulp and paper mills",
     template: "%s | J88Moja Systems",
   },
   description:
-    "TissueMate replaces paper shift logs and spreadsheets for tissue and paper plants. Record output, stops and their causes in one place. Pilots from R500/month.",
+    "FibreMate replaces paper shift logs and spreadsheets for pulp and paper mills. Record output, stops and their causes in one place, and use free mill calculators. Pilots from R500/month.",
   openGraph: {
-    title: "TissueMate by J88Moja Systems",
+    title: "FibreMate by J88Moja Systems",
     description:
-      "Shift production and downtime reporting for tissue and paper plants, built by a production lead with 15 years on tissue machines.",
+      "Shift production, downtime and calculators for pulp and paper mills, built by a production lead with 15 years on tissue machines.",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
     type: "website",
     locale: "en-US",
@@ -43,6 +44,7 @@ export default function Home() {
       <Founder />
       <Pilot />
       <FreeLogSheet />
+      <CalculatorsTeaser />
       <Calendly />
       <FAQs />
       <Contact />

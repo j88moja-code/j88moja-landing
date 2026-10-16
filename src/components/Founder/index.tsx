@@ -27,7 +27,7 @@ const Founder = () => {
               <p className="mb-6 text-base !leading-relaxed text-body-color md:text-lg">
                 I&apos;ve seen how much time goes into paper logs and
                 end-of-shift reports, and how often downtime minutes go
-                missing. TissueMate is built to fix that.
+                missing. FibreMate is built to fix that.
               </p>
               <p className="text-base !leading-relaxed text-body-color md:text-lg">
                 National Diploma in Pulp &amp; Paper Technology (DUT), BTech

@@ -11,14 +11,14 @@ const FAQs = () => {
 
   const faqData = [
     {
-      question: "What is TissueMate?",
+      question: "What is FibreMate?",
       answer:
-        "A web-based tool for tissue and paper plants to record shift production, stops and their causes in one place, and to see reports across shifts and machines.",
+        "A web-based tool for pulp and paper mills to record shift production, stops and their causes in one place, see reports across shifts, and work out everyday mill calculations.",
     },
     {
       question: "Who is it for?",
       answer:
-        "Smaller tissue mills where shift data still lives on paper logs, whiteboards or spreadsheets. It currently covers one paper machine per site, running day and night shifts.",
+        "Smaller paper and tissue mills where shift data still lives on paper logs, whiteboards or spreadsheets. It currently covers one paper machine per site, running day and night shifts. The calculators are free for anyone.",
     },
     {
       question: "How long does setup take?",
@@ -31,9 +31,14 @@ const FAQs = () => {
         "Pilots start from R500/month. The price after the pilot is agreed before you start, so there are no surprises.",
     },
     {
+      question: "Are the calculators free?",
+      answer:
+        "Yes. Production rate, reel weight, consistency and dilution, basis weight, OEE, cost of a stop, roll speed and draw are free on the Calculators page, with no sign-up.",
+    },
+    {
       question: "Do we need to install anything?",
       answer:
-        "No. TissueMate runs in a web browser, so supervisors can use the computers or devices you already have.",
+        "No. FibreMate runs in a web browser, so supervisors can use the computers or devices you already have.",
     },
     {
       question: "What happens to our data?",

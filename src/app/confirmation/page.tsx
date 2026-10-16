@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Confirmation | J88Moja Systems",
-  description: "Confirmation after successful TissueMate Demo App Request",
+  description: "Confirmation after successful FibreMate Demo App Request",
   // other metadata
 };
 

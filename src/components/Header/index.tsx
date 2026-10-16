@@ -81,17 +81,17 @@ const Header = () => {
                 } `}
               >
                 <Image
-                  src="/images/logo/tissuemate-logo.svg"
-                  alt="TissueMate"
-                  width={147}
+                  src="/images/logo/fibremate-logo.svg"
+                  alt="FibreMate"
+                  width={132}
                   height={32}
                   priority
                   className="dark:hidden"
                 />
                 <Image
-                  src="/images/logo/tissuemate-logo-dark.svg"
-                  alt="TissueMate"
-                  width={147}
+                  src="/images/logo/fibremate-logo-dark.svg"
+                  alt="FibreMate"
+                  width={132}
                   height={32}
                   priority
                   className="hidden dark:block"
@@ -195,7 +195,7 @@ const Header = () => {
                   href="/request-a-demo"
                   className="ease-in-up hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white shadow-btn transition duration-300 hover:bg-opacity-90 hover:shadow-btn-hover md:block md:px-9 lg:px-6 xl:px-9"
                 >
-                  Try TissueMate
+                  Try FibreMate
                 </Link>
                 <div>
                   <ThemeToggler />

@@ -14,14 +14,15 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Shift production and downtime reporting for tissue and paper
-                  plants
+                  Shift production, downtime and calculators for pulp and paper
+                  mills
                 </h1>
                 <p className="mb-6 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  TissueMate replaces paper shift logs and end-of-shift
+                  FibreMate replaces paper shift logs and end-of-shift
                   spreadsheets with one place to record output, stops and
-                  their causes. Built by a production lead with 15 years on
-                  tissue machines.
+                  their causes, plus the everyday mill calculators your team
+                  needs. Built by a production lead with 15 years on tissue
+                  machines.
                 </p>
                 <p className="mb-12 text-base font-medium text-black dark:text-white">
                   Pilots from R500/month. Set up in a week.
@@ -34,7 +35,7 @@ const Hero = () => {
                     Book a 30-minute call
                   </Link>
                   <Link
-                    href="#tissuemate"
+                    href="#fibremate"
                     className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
                   >
                     See what it does
