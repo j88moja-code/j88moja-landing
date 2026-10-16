@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 export const metadata: Metadata = {
   title: "Sign Up Page | J88Moja Systems",
-  description: "This a request demo page for TissueMate",
+  description: "This a request demo page for FibreMate",
   // other metadata
 };
 
@@ -19,7 +19,7 @@ const RequestADemo = () => {
   const [isRequestConfirmed, setIsRequestConfirmed] = useState(false);
   const [isErrorState, setIsErrorState] = useState(false);
   const [infoMessage, setInfoMessage] = useState(
-    "See TissueMate on a live demo and how it would track production and downtime on your floor.",
+    "See FibreMate on a live demo and how it would track production and downtime on your floor.",
   );
 
   // useEffect(() => {
@@ -213,7 +213,7 @@ const RequestADemo = () => {
                             email: "",
                           });
                           setInfoMessage(
-                            "See TissueMate on a live demo and how it would track production and downtime on your floor.",
+                            "See FibreMate on a live demo and how it would track production and downtime on your floor.",
                           );
                         }}
                       >
@@ -222,7 +222,7 @@ const RequestADemo = () => {
                     )}
 
                     <p className="mt-4 text-center text-base font-medium text-body-color">
-                      Already using TissueMate?{" "}
+                      Already using FibreMate?{" "}
                       <Link
                         href="https://cmoos.tech"
                         target="_blank"

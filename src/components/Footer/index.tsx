@@ -12,24 +12,24 @@ const Footer = () => {
               <div className="mb-12 max-w-[360px] lg:mb-16">
                 <Link href="/" className="mb-8 inline-block">
                   <Image
-                    src="/images/logo/tissuemate-logo.svg"
-                    alt="TissueMate"
-                    width={184}
+                    src="/images/logo/fibremate-logo.svg"
+                    alt="FibreMate"
+                    width={165}
                     height={40}
                     className="dark:hidden"
                   />
                   <Image
-                    src="/images/logo/tissuemate-logo-dark.svg"
-                    alt="TissueMate"
-                    width={184}
+                    src="/images/logo/fibremate-logo-dark.svg"
+                    alt="FibreMate"
+                    width={165}
                     height={40}
                     className="hidden dark:block"
                   />
                 </Link>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  J88Moja (Pty) Ltd t/a J88Moja Systems builds TissueMate,
-                  shift production and downtime reporting for tissue and
-                  paper plants.
+                  J88Moja (Pty) Ltd t/a J88Moja Systems builds FibreMate,
+                  shift production, downtime and calculators for pulp and
+                  paper mills.
                 </p>
                 <div className="flex items-center">
                   {/* <a
@@ -118,10 +118,18 @@ const Footer = () => {
                 <ul>
                   <li>
                     <Link
-                      href="/#tissuemate"
+                      href="/#fibremate"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      TissueMate
+                      FibreMate
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/calculators"
+                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    >
+                      Calculators
                     </Link>
                   </li>
                   <li>

@@ -3,13 +3,13 @@ const TermsAndConditions = () => {
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
         <p className="mb-4">
-          Terms and Conditions for TissueMate Demo App (Version 1.0.0)
+          Terms and Conditions for FibreMate Demo App (Version 1.0.0)
         </p>
 
         <h2 className="mb-2 text-2xl font-bold">1. Purpose of the Demo</h2>
         <p className="mb-4">
-          The purpose of the TissueMate Demo App is to demonstrate the capabilities
-          of the TissueMate platform. The TissueMate platform is a platform that allows
+          The purpose of the FibreMate Demo App is to demonstrate the capabilities
+          of the FibreMate platform. The FibreMate platform is a platform that allows
           users to easily manage day-to-day data capturing, reporting and
           analysis for various operations needs. The demo is provided solely for
           the purpose of evaluating the MVP and its features. Any data provided
@@ -19,7 +19,7 @@ const TermsAndConditions = () => {
 
         <h2 className="mb-2 text-2xl font-bold">2. Intellectual Property</h2>
         <p className="mb-4">
-          The TissueMate Demo App is protected by copyright, trademark, and other
+          The FibreMate Demo App is protected by copyright, trademark, and other
           intellectual property laws. All rights reserved. The user not have the
           right to copy, reproduce, or create derivative works based on any part
           of the MVP or its content.
@@ -27,16 +27,16 @@ const TermsAndConditions = () => {
 
         <h2 className="mb-2 text-2xl font-bold">3. Confidentiality</h2>
         <p className="mb-4">
-          The TissueMate Demo App is provided &quot;as is&quot; and without warranty
-          of any kind, either express or implied. The user agrees that the TissueMate
+          The FibreMate Demo App is provided &quot;as is&quot; and without warranty
+          of any kind, either express or implied. The user agrees that the FibreMate
           Demo App is provided on an &quot;as is&quot; basis and that the user
           will not reproduce, distribute, or create derivative works based on
-          the TissueMate Demo App.
+          the FibreMate Demo App.
         </p>
 
         <h2 className="mb-2 text-2xl font-bold">4. Data Disclaimer</h2>
         <p className="mb-4">
-          The TissueMate Demo App is intended for demonstration purposes only and
+          The FibreMate Demo App is intended for demonstration purposes only and
           does not contain any actual data.
         </p>
 
@@ -48,66 +48,66 @@ const TermsAndConditions = () => {
 
         <h2 className="mb-2 text-2xl font-bold">6. Limited License</h2>
         <p className="mb-4">
-          The user may not use the TissueMate Demo App for any illegal purposes. The
+          The user may not use the FibreMate Demo App for any illegal purposes. The
           user is granted a limited, non-exclusive, non-transferable license to
-          use the TissueMate Demo App.
+          use the FibreMate Demo App.
         </p>
 
         <h2 className="mb-2 text-2xl font-bold">7. No Warranty</h2>
         <p className="mb-4">
-          The TissueMate Demo App is provided &quot;as is&quot; and without warranty
-          of any kind, either express or implied. The user agrees that the TissueMate
+          The FibreMate Demo App is provided &quot;as is&quot; and without warranty
+          of any kind, either express or implied. The user agrees that the FibreMate
           Demo App is provided on an &quot;as is&quot; basis and that the user
           will not reproduce, distribute, or create derivative works based on
-          the TissueMate Demo App. J88Moja Systems does not warrant or guarantee that
-          the TissueMate Demo App will be uninterrupted or error-free.
+          the FibreMate Demo App. J88Moja Systems does not warrant or guarantee that
+          the FibreMate Demo App will be uninterrupted or error-free.
         </p>
 
         <h2 className="mb-2 text-2xl font-bold">8. Limitation of Liability</h2>
         <p className="mb-4">
-          The TissueMate Demo App is provided &quot;as is&quot; and without warranty
-          of any kind, either express or implied. The user agrees that the TissueMate
+          The FibreMate Demo App is provided &quot;as is&quot; and without warranty
+          of any kind, either express or implied. The user agrees that the FibreMate
           Demo App is provided on an &quot;as is&quot; basis and that the user
           will not reproduce, distribute, or create derivative works based on
-          the TissueMate Demo App. Eventhough security measures are taken to protect
-          the TissueMate Demo App, J88Moja Systems may not be held liable for any
-          damages of any kind arising from the use of the TissueMate Demo App,
+          the FibreMate Demo App. Eventhough security measures are taken to protect
+          the FibreMate Demo App, J88Moja Systems may not be held liable for any
+          damages of any kind arising from the use of the FibreMate Demo App,
           including but not limited to direct, indirect, incidental, special, or
           consequential damages.
         </p>
 
         <h2 className="mb-2 text-2xl font-bold">9. Termination</h2>
         <p className="mb-4">
-          The TissueMate Demo App is provided &quot;as is&quot; and without warranty
-          of any kind, either express or implied. The user agrees that the TissueMate
+          The FibreMate Demo App is provided &quot;as is&quot; and without warranty
+          of any kind, either express or implied. The user agrees that the FibreMate
           Demo App is provided on an &quot;as is&quot; basis and that the user
           will not reproduce, distribute, or create derivative works based on
-          the TissueMate Demo App. J88Moja Systems may terminate or suspend access to
-          the TissueMate Demo App at any time without notice or liability.
+          the FibreMate Demo App. J88Moja Systems may terminate or suspend access to
+          the FibreMate Demo App at any time without notice or liability.
         </p>
 
         <h2 className="mb-2 text-2xl font-bold">10. Feedback</h2>
         <p className="mb-4">
-          Your satisfaction with the TissueMate Demo App is important to us. We
+          Your satisfaction with the FibreMate Demo App is important to us. We
           appreciate your feedback and suggestions. Please let us know if you
           have any questions or comments by sending an email to
-          info@j88moja.tech. Any feedback will be used to improve the TissueMate Demo
-          App and will be used to enhance the functionality of the TissueMate Demo
+          info@j88moja.tech. Any feedback will be used to improve the FibreMate Demo
+          App and will be used to enhance the functionality of the FibreMate Demo
           App, this will become company property and will not be shared with
           third parties.
         </p>
         <h2 className="mb-2 text-2xl font-bold">11. Governing Law</h2>
         <p className="mb-4">
-          The TissueMate Demo App is governed by the laws of South Africa. This
+          The FibreMate Demo App is governed by the laws of South Africa. This
           notice shall be governed by and construed in accordance with the laws
           of South Africa.
         </p>
         <h2 className="mb-2 text-2xl font-bold">12. User Responsibility</h2>
         <p className="mb-4">
-          The user shall not use the TissueMate Demo App for any illegal purposes.
+          The user shall not use the FibreMate Demo App for any illegal purposes.
           The user is responsible for protecting their login credentials and
           should not share them with others. Any unauthorized access or use of
-          the TissueMate Demo App could lead to account suspension or termination.
+          the FibreMate Demo App could lead to account suspension or termination.
           The user agrees to take all necessary measures to protect their
           account.
         </p>

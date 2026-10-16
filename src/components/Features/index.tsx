@@ -5,11 +5,11 @@ import featuresData from "./featuresData";
 const Features = () => {
   return (
     <>
-      <section id="tissuemate" className="py-16 md:py-20 lg:py-28">
+      <section id="fibremate" className="py-16 md:py-20 lg:py-28">
         <div className="container">
           <SectionTitle
-            title="What TissueMate does on your plant floor"
-            paragraph="Most tissue plants still track shifts on paper and in spreadsheets. TissueMate puts production and downtime in one place, so you know where the hours went."
+            title="What FibreMate does on your plant floor"
+            paragraph="Most mills still track shifts on paper and in spreadsheets. FibreMate puts production and downtime in one place, so you know where the hours went."
             center
           />
 

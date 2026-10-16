@@ -10,7 +10,7 @@ const Calendly = () => {
       <div className="container">
         <SectionTitle
           title="Book a 30-minute call"
-          paragraph="Tell me how you track production and downtime today, and I'll show you how TissueMate would work on your floor. No obligation."
+          paragraph="Tell me how you track production and downtime today, and I'll show you how FibreMate would work on your floor. No obligation."
           center
           mb="80px"
         />

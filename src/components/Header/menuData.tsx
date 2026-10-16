@@ -34,6 +34,17 @@ const menuData: Menu[] = [
     ),
   },
   {
+    id: 7,
+    title: "Calculators",
+    path: "/calculators",
+    newTab: false,
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M5 2a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2H5zm1 2h8v3H6V4zm0 5h2v2H6V9zm3 0h2v2H9V9zm3 0h2v2h-2V9zm-6 3h2v2H6v-2zm3 0h2v2H9v-2zm3 0h2v5h-2v-5zm-6 3h5v2H6v-2z" />
+      </svg>
+    ),
+  },
+  {
     id: 3,
     title: "FAQ",
     path: "/faq",
