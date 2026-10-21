@@ -4,9 +4,10 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | J88Moja Systems",
-  description: "About J88Moja Systems, the company behind FibreMate",
-  // other metadata
+  title: "About",
+  description:
+    "FibreMate is built by J88Moja Systems, founded by a production lead with 15 years in tissue manufacturing.",
+  alternates: { canonical: "/about" },
 };
 
 const AboutPage = () => {

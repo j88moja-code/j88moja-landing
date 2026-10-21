@@ -3,9 +3,10 @@ import { Metadata } from "next";
 import TermsAndConditions from "@/components/TermsAndConditions";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | J88Moja Systems",
-  description: "This is Terms and Conditions for FibreMate Demo App Request",
-  // other metadata
+  title: "Terms and conditions",
+  description:
+    "Terms and conditions for FibreMate demos and services from J88Moja Systems.",
+  alternates: { canonical: "/terms-and-conditions" },
 };
 
 const TermsAndConditionsPage = () => {
