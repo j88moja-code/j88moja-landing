@@ -4,9 +4,10 @@ import CookiePolicy from "@/components/CookiePolicy";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | J88Moja Systems",
-  description: "This is Cookie Policy Page for J88Moja Systems",
-  // other metadata
+  title: "Cookie policy",
+  description:
+    "How the J88Moja Systems website uses cookies.",
+  alternates: { canonical: "/cookie-policy" },
 };
 
 const CookiePolicyPage = () => {

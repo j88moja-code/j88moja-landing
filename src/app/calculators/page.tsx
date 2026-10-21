@@ -3,7 +3,8 @@ import Calculators from "@/components/Calculators";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pulp and paper calculators | FibreMate",
+  title: "Free pulp and paper calculators",
+  alternates: { canonical: "/calculators" },
   description:
     "Free pulp and paper calculators: production rate, reel length and weight, consistency and dilution, basis weight and bulk, OEE, cost of a stop, roll speed and draw.",
 };

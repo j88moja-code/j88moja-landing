@@ -1,13 +1,20 @@
 "use client";
 
 import { useId, useState } from "react";
-import { defaultsFor, formatResult, type Calculator } from "@/lib/calculators";
+import Link from "next/link";
+import { CALCULATORS, defaultsFor, formatResult } from "@/lib/calculators";
 
 /**
  * One calculator on the public site. Same formulas as the FibreMate app
  * (src/lib/calculators.ts). Everything runs in the browser.
  */
-export default function CalculatorCard({ calc }: { calc: Calculator }) {
+/**
+ * Takes the calculator's id (plain text), not the calculator object: server
+ * pages can only pass plain data to this browser component, and each
+ * calculator contains a compute() function.
+ */
+export default function CalculatorCard({ calcId, href }: { calcId: string; href?: string }) {
+  const calc = CALCULATORS.find((c) => c.id === calcId) ?? CALCULATORS[0];
   const id = useId();
   const initialRaw = () => Object.fromEntries(calc.fields.map((f) => [f.key, String(f.default)]));
   const [values, setValues] = useState<Record<string, number>>(() => defaultsFor(calc));
@@ -35,7 +42,8 @@ export default function CalculatorCard({ calc }: { calc: Calculator }) {
             {calc.category}
           </p>
           <h3 id={`${id}-title`} className="text-xl font-bold text-black dark:text-white">
-            {calc.title}
+            {/* On the overview page each title links to the calculator's own page */}
+            {href ? <Link href={href} className="hover:text-primary">{calc.title}</Link> : calc.title}
           </h3>
           <p className="mt-1 text-sm text-body-color dark:text-body-color-dark">{calc.description}</p>
         </div>

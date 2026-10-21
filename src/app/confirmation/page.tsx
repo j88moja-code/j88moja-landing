@@ -5,9 +5,10 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Confirmation | J88Moja Systems",
-  description: "Confirmation after successful FibreMate Demo App Request",
-  // other metadata
+  title: "Request received",
+  description:
+    "Your FibreMate demo request was received.",
+  robots: { index: false, follow: false },
 };
 
 const ConfirmationPage = () => {

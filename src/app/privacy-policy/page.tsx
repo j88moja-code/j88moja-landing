@@ -4,9 +4,10 @@ import PrivacyPolicy from "@/components/PrivacyPolicy";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | J88Moja Systems",
-  description: "This is Privacy Policy Page for J88Moja Systems",
-  // other metadata
+  title: "Privacy policy",
+  description:
+    "How J88Moja Systems collects, uses and protects personal information.",
+  alternates: { canonical: "/privacy-policy" },
 };
 
 const PrivacyPolicyPage = () => {

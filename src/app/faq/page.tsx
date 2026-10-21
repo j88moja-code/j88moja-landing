@@ -3,9 +3,10 @@ import { Metadata } from "next";
 import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
-  title: "FAQ | J88Moja Systems",
-  description: "Frequently Asked Questions",
-  // other metadata
+  title: "Frequently asked questions",
+  description:
+    "Answers about FibreMate: who it is for, setup time, pilot pricing, data protection under POPIA and the free calculators.",
+  alternates: { canonical: "/faq" },
 };
 
 const FAQPage = () => {

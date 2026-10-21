@@ -4,9 +4,10 @@ import Calendly from "@/components/Calendly";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Book A Consultation | J88Moja Systems",
-  description: "Book a free consultation with us, we are ready to help",
-  // other metadata
+  title: "Book a 30-minute call",
+  description:
+    "Book a free 30-minute call about logging shift production and downtime at your pulp, paper or tissue mill.",
+  alternates: { canonical: "/book-consultation" },
 };
 
 const BookConsultationPage = () => {

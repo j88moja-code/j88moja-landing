@@ -3,10 +3,10 @@ import { Metadata } from "next";
 import RequestADemo from "@/components/RequestADemo";
 
 export const metadata: Metadata = {
-  title: "Request A Demo | J88Moja Systems",
+  title: "Request a demo",
   description:
-    "Get a live demo of FibreMate and see how our solution can help your business",
-  // other metadata
+    "See FibreMate on a live demo: shift production, downtime logging and reports for pulp and paper mills.",
+  alternates: { canonical: "/request-a-demo" },
 };
 
 const SignupPage = () => {

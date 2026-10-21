@@ -17,7 +17,7 @@ export default function CalculatorsTeaser() {
           {CALCULATORS.map((c) => (
             <li key={c.id}>
               <Link
-                href={`/calculators#${c.id}`}
+                href={`/calculators/${c.id}`}
                 className="block h-full rounded-md border border-body-color/[.15] bg-white p-4 duration-300 hover:border-primary dark:border-white/[.15] dark:bg-gray-dark"
               >
                 <p className="text-xs font-semibold uppercase tracking-wide text-body-color dark:text-body-color-dark">
