@@ -1,50 +1,38 @@
-import prisma from "./prisma";
 import { NextResponse } from "next/server";
-import DataForm from "form-data";
-import Mailgun from "mailgun.js";
+import prisma from "./prisma";
+import { NOTIFY_EMAIL, emailLayout, escapeHtml, now, sendMail } from "./mail";
+import { SITE_URL } from "@/lib/site";
 
-const API_KEY = process.env.MAILGUN_API_KEY || "";
-const DOMAIN = process.env.MAILGUN_DOMAIN || "";
-
+/**
+ * Demo request, step 2: the person clicked the link in their email.
+ * Mark the request confirmed, notify NOTIFY_EMAIL, and show the thank-you page.
+ */
 export async function handleConfirmation(req: Request) {
-  const url = new URL(req.url);
-  const token = url.searchParams.get("token");
-
-  if (!token) {
-    return NextResponse.json({ error: "Invalid token" }, { status: 400 });
-  }
+  const token = new URL(req.url).searchParams.get("token");
+  const done = (ok: boolean) => NextResponse.redirect(`${SITE_URL}/confirmation?approved=${ok}`);
+  if (!token) return done(false);
 
   try {
-    const record = await prisma.pendingDemoRequest.findUnique({
-      where: { token },
+    const request = await prisma.demoRequest.findUnique({ where: { token } });
+    if (!request) return done(false);
+    if (request.confirmedAt) return done(true); // link clicked twice: no second email
+
+    await prisma.demoRequest.update({ where: { token }, data: { confirmedAt: new Date() } });
+
+    await sendMail({
+      to: NOTIFY_EMAIL,
+      replyTo: request.email,
+      subject: `Demo request: ${request.name}`,
+      text: `New confirmed demo request\n\nName: ${request.name}\nEmail: ${request.email}\nConfirmed: ${now()}\n\nReply to this email to contact them.`,
+      html: emailLayout(`
+        <h2 style="font-size:18px">New confirmed demo request</h2>
+        <p><b>Name:</b> ${escapeHtml(request.name)}<br/><b>Email:</b> ${escapeHtml(request.email)}<br/><b>Confirmed:</b> ${now()}</p>
+        <p style="color:#5B6274">Reply to this email to contact them.</p>`),
     });
 
-    if (!record) {
-      return NextResponse.json({ error: "Token not found" }, { status: 404 });
-    }
-
-    await prisma.demoRequest.create({
-      data: { name: record.name, email: record.email },
-    });
-
-    await prisma.pendingDemoRequest.delete({ where: { token } });
-
-    const mailgun = new Mailgun(DataForm);
-    const mg = mailgun.client({ username: "api", key: API_KEY });
-
-    await mg.messages.create(DOMAIN, {
-      from: "Request FibreMate Demo <no-reply@mg.j88moja.tech>",
-      to: "ntobekos@j88moja.tech",
-      subject: "FibreMate Demo Request",
-      text: `New demo request:\nName: ${record.name}\nEmail: ${record.email}\nTime: ${new Date().toLocaleString("en-ZA")}`,
-      html: `<h1>Hello Jobe</h1><p>Name: ${record.name}</p><p>Email: ${record.email}</p><p>Time: ${new Date().toLocaleString("en-ZA")}</p>`,
-    });
-
-    return NextResponse.redirect(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/confirmation/?approved=true`,
-    );
+    return done(true);
   } catch (err) {
-    console.error("Error handling confirmation:", err);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    console.error("Demo confirmation error:", err);
+    return done(false);
   }
 }

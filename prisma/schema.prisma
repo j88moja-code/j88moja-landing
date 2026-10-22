@@ -1,8 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// FibreMate website database: contact messages and demo requests.
+// After changing DATABASE_URL to a new database, create the tables with:
+//   npx prisma db push
 
 generator client {
   provider = "prisma-client-js"
@@ -13,25 +11,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model PendingDemoRequest {
+/// A message from the contact form. The same person may write more than once.
+model ContactMessage {
   id        Int      @id @default(autoincrement())
   name      String
-  email     String   @unique
-  token     String   @unique
+  email     String
+  message   String
   createdAt DateTime @default(now())
+
+  @@index([email])
 }
 
+/// A demo request. confirmedAt is set when the person clicks the link in
+/// the confirmation email (double opt-in, so fake addresses can't book demos).
 model DemoRequest {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
-}
+  id          Int       @id @default(autoincrement())
+  name        String
+  email       String
+  token       String    @unique
+  createdAt   DateTime  @default(now())
+  confirmedAt DateTime?
 
-model ContactUsList {
-  id      Int     @id @default(autoincrement())
-  name    String
-  email   String  @unique
-  message String
-  createdAt DateTime @default(now())
+  @@index([email])
 }

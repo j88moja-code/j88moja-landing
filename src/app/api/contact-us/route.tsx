@@ -1,182 +1,64 @@
 import { NextRequest, NextResponse } from "next/server";
-import aj from "../../lib/aj";
-import DataForm from "form-data";
-import Mailgun from "mailgun.js";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../lib/prisma";
+import { protect } from "../../lib/protect";
+import { NOTIFY_EMAIL, emailLayout, escapeHtml, now, sendMail } from "../../lib/mail";
 
-const prisma = new PrismaClient();
+const MAX_MESSAGE = 1000;
 
-const API_KEY = process.env.MAILGUN_API_KEY || "";
-const DOMAIN = process.env.MAILGUN_DOMAIN || "";
-
-export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const email = searchParams.get("email")!;
-
-  const decision = await aj.protect(req, { email });
-  if (decision.isDenied()) {
-    if (decision.reason.isShield()) {
-      console.log("Suspicious action detected!");
-      return NextResponse.json(
-        { error: "Suspicious action detected!" },
-        { status: 403 },
-      );
-    }
-    if (decision.reason.isBot()) {
-      console.log("Looks like you might be a bot!");
-      return NextResponse.json(
-        { error: "Looks like you might be a bot!" },
-        { status: 403 },
-      );
-    }
+/**
+ * Contact form: saves the message, then emails it to NOTIFY_EMAIL with
+ * Reply-To set to the sender, so you can answer straight from your inbox.
+ */
+export async function POST(req: NextRequest) {
+  let body: { name?: string; email?: string; message?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
-  return NextResponse.json({ data: "Hello World!" });
-}
+  const name = (body.name ?? "").trim();
+  const email = (body.email ?? "").trim().toLowerCase();
+  const message = (body.message ?? "").trim();
 
-export async function POST(request: NextRequest) {
-  const body = await request.json();
-  const { name, email, message } = body;
-
-  const decision = await aj.protect(request, { email });
-  if (decision.isDenied()) {
-    if (decision.reason.isRateLimit()) {
-      const resetTime = decision.reason.resetTime;
-      if (!resetTime) {
-        return NextResponse.json(
-          { error: "Too many requests. Try again later." },
-          { status: 429 },
-        );
-      }
-
-      const remainingTime = Math.max(
-        0,
-        Math.floor((resetTime.getTime() - Date.now()) / 1000),
-      );
-      const timeUnit = remainingTime > 60 ? "minutes" : "seconds";
-      const timeValue =
-        timeUnit === "minutes" ? Math.ceil(remainingTime / 60) : remainingTime;
-
-      return NextResponse.json(
-        { error: `Too many requests. Try again in ${timeValue} ${timeUnit}.` },
-        { status: 429 },
-      );
-    }
-
-    if (decision.reason.isEmail()) {
-      const errorType = decision.reason.emailTypes;
-      if (errorType.includes("INVALID")) {
-        return NextResponse.json(
-          { error: "Invalid email format. Check your spelling." },
-          { status: 400 },
-        );
-      } else if (errorType.includes("DISPOSABLE")) {
-        return NextResponse.json(
-          { error: "Disposable email address. Check your spelling." },
-          { status: 400 },
-        );
-      } else if (errorType.includes("NO_MX_RECORDS")) {
-        return NextResponse.json(
-          { error: "Email without an MX record. Check your spelling." },
-          { status: 400 },
-        );
-      } else {
-        return NextResponse.json(
-          { error: "Invalid email. Check your spelling." },
-          { status: 400 },
-        );
-      }
-    }
+  if (!name || !email || !message) {
+    return NextResponse.json({ error: "Please fill in your name, email and message." }, { status: 400 });
+  }
+  if (message.length > MAX_MESSAGE) {
+    return NextResponse.json(
+      { error: `Please keep your message under ${MAX_MESSAGE} characters, or email us directly.` },
+      { status: 400 }
+    );
   }
 
-  const checkEmailExists = async (email: string) => {
-    const contact = await prisma.contactUsList.findUnique({
-      where: { email },
+  const blocked = await protect(req, email);
+  if (blocked) return blocked;
+
+  try {
+    await prisma.contactMessage.create({ data: { name, email, message } });
+  } catch (err) {
+    // Saving failed, but still try to email it so the message isn't lost
+    console.error("Could not save contact message:", err);
+  }
+
+  try {
+    await sendMail({
+      to: NOTIFY_EMAIL,
+      replyTo: email,
+      subject: `New message from ${name}`,
+      text: `New contact form message\n\nName: ${name}\nEmail: ${email}\nTime: ${now()}\n\n${message}\n\nReply to this email to answer ${name} directly.`,
+      html: emailLayout(`
+        <h2 style="font-size:18px">New contact form message</h2>
+        <p><b>Name:</b> ${escapeHtml(name)}<br/><b>Email:</b> ${escapeHtml(email)}<br/><b>Time:</b> ${now()}</p>
+        <p style="white-space:pre-wrap;background:#F3F4F7;padding:12px;border-radius:6px">${escapeHtml(message)}</p>
+        <p style="color:#5B6274">Reply to this email to answer ${escapeHtml(name)} directly.</p>`),
     });
-    return !!contact;
-  };
+  } catch (err) {
+    console.error("Could not send contact notification:", err);
+    return NextResponse.json(
+      { error: "Your message couldn't be sent right now. Please try again in a few minutes." },
+      { status: 502 }
+    );
+  }
 
-  const handleFormSubmission = async (
-    name: string,
-    email: string,
-    message: string,
-  ) => {
-    const emailExists = await checkEmailExists(email);
-
-    if (emailExists) {
-      return NextResponse.json(
-        {
-          error:
-            "Contact email already received. Expect a reply within 24 hours.",
-        },
-        { status: 500 },
-      );
-    }
-
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 },
-      );
-    }
-
-    if (message.length > 300) {
-      return NextResponse.json(
-        {
-          error:
-            "Message too long. Max length is 300 characters. Consider sending email instead",
-        },
-        { status: 400 },
-      );
-    }
-
-    try {
-      await prisma.contactUsList.create({
-        data: { name, email, message },
-      });
-    } catch (error) {
-      console.error("Error inserting into contact_us_list:", error);
-      return NextResponse.json(
-        { error: "Failed to submit the form" },
-        { status: 500 },
-      );
-    }
-
-    // Send email to admin
-    const mailgun = new Mailgun(DataForm);
-    const mg = mailgun.client({
-      username: "api",
-      key: API_KEY,
-    });
-    const data = {
-      from: "Contact Form <no-reply@mg.j88moja.tech>",
-      to: "ntobekos@j88moja.tech",
-      subject: "Contact Form Submission",
-      text: `Hello Jobe,
-
-You have a new contact form submission. Here are the details:
-Name: ${name}
-Email: ${email}
-Message: ${message}
-Date: ${new Date().toLocaleString("en-ZA")}
-
-Thank you for your time.
-`,
-      html: `
-      <h1 style="font-size: 1.5rem; font-weight: 700;">Hello Jobe</h1>
-      <p style="font-size: 1rem; font-weight: 400;">You have a new contact form submission. Here are the details:</p>
-      <ul style="font-size: 1rem; font-weight: 400;">
-        <li>Name: ${name}</li>
-        <li>Email: ${email}</li>
-        <li>Message: ${message}</li>
-        <li>Date: ${new Date().toLocaleString("en-ZA")}</li>
-      </ul>
-      <p>Thank you for your time.</p>
-    `,
-    };
-    await mg.messages.create(DOMAIN, data);
-
-    return NextResponse.json({ data: "Success" }, { status: 200 });
-  };
-
-  return await handleFormSubmission(name, email, message);
+  return NextResponse.json({ data: "Thank you. We'll get back to you within one working day." });
 }
