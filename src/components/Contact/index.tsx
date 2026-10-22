@@ -39,13 +39,12 @@ const Contact = () => {
 
       const result = await response.json();
 
-      if (result.data === "Success") {
+      // The API answers {data: "<thank-you message>"} or {error: "<what went wrong>"}
+      if (response.ok) {
         setIsFormDataSubmitted(true);
-        setInfoMessage(
-          "Thank you for your message. We will get back to you shortly.",
-        );
+        setInfoMessage(result.data || "Thank you. We'll get back to you shortly.");
       } else {
-        toast.error("Something went wrong. Please try again later.");
+        toast.error(result.error || "Something went wrong. Please try again later.");
         setIsErrorState(true);
         setInfoMessage(result.error || "An error occurred");
       }
@@ -160,7 +159,7 @@ const Contact = () => {
                           value={formData.message}
                           rows={5}
                           // minLength={30}
-                          maxLength={300}
+                          maxLength={1000}
                           // @ts-expect-error
                           onChange={handleInputChange}
                           required

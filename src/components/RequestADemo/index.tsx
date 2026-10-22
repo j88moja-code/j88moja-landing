@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { APP_URL } from "@/lib/site";
 import Image from "next/image";
 import { useState } from "react";
 import { Metadata } from "next";
@@ -75,13 +76,14 @@ const RequestADemo = () => {
 
       const result = await response.json();
 
-      if (result.data === "Success") {
+      // The API answers {data: "<message>"} or {error: "<what went wrong>"}
+      if (response.ok) {
         setIsFormDataSubmitted(true);
         setInfoMessage(
-          "Thank you for your request. The link should be in your email shortly. Check your spam folder if you don't see it in your inbox.",
+          `${result.data || "Thank you for your request."} If it isn't in your inbox within a few minutes, check your spam folder.`,
         );
       } else {
-        toast.error("Something went wrong. Please try again later.");
+        toast.error(result.error || "Something went wrong. Please try again later.");
         setIsErrorState(true);
         setInfoMessage(result.error || "An error occurred");
       }
@@ -224,7 +226,7 @@ const RequestADemo = () => {
                     <p className="mt-4 text-center text-base font-medium text-body-color">
                       Already using FibreMate?{" "}
                       <Link
-                        href="https://cmoos.tech"
+                        href={APP_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline"
